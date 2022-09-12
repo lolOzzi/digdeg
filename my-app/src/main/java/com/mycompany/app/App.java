@@ -1,15 +1,12 @@
 package com.mycompany.app;
 
-/**
- * Hello world!
- *
- */
 import processing.core.PApplet;
 
 public class App extends PApplet {
 
 	public void settings() {
-		size(500, 500);
+		size(1000, 1000);
+
 	}
 
 	public void draw(){
@@ -18,8 +15,7 @@ public class App extends PApplet {
 	}
   
 	public static void main(String[] passedArgs) {
-		String[] appletArgs = new String[] { "com.mycompany.app.App" };
-		PApplet.main(appletArgs);
+		PApplet.runSketch(new String[] { "com.mycompany.app.App" }, new App());
     }
 }
 
