@@ -5,8 +5,7 @@ import processing.core.PApplet;
 public class App extends PApplet {
 
 	public void settings() {
-		size(1000, 1000);
-
+		fullScreen();
 	}
 
 	public void draw(){
