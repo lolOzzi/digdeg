@@ -3,7 +3,6 @@ package com.mycompany.app;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.processing.PApplet;
 
 /**
  * Unit test for simple App.
