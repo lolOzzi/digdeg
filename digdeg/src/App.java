@@ -1,6 +1,6 @@
 import processing.core.PApplet;
 
-public class Main extends PApplet {
+public class App extends PApplet {
 
 	public void settings() {
 		size(500, 500);
@@ -12,7 +12,7 @@ public class Main extends PApplet {
 	}
   
 	public static void main(String[] passedArgs) {
-		String[] appletArgs = new String[] { "MySketch" };
+		String[] appletArgs = new String[] { "App" };
 		PApplet.main(appletArgs);
     }
 }

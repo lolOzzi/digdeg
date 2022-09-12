@@ -2,6 +2,7 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "c:\\Users\\Stilling\\Downloads\\processing-4.0.1-windows-x64\\processing-4.0.1\\core\\library\\core.jar"
     ]
 }
