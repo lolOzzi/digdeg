@@ -2,6 +2,7 @@
 
   public void settings() {
     fullScreen();
+
   }
 
   public void draw(){

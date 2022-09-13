@@ -40,8 +40,10 @@ public class Player{
         if (key == CODED && keyPressed == true){
             if (keyCode == LEFT){
                 velocity.x = -10;
+                twoFrameCheck = 0;
             } else if (keyCode == RIGHT){
                 velocity.x = 10;
+                twoFrameCheck = 0;
             } else if (keyCode == UP && location.y > height-110){
                 applyForce(new PVector(0, -10));
             }
@@ -52,11 +54,15 @@ public class Player{
         if (key == CODED){
             if (keyCode == LEFT){
                 keyPressed = false;
+                if (twoFrameCheck == 2)
                 velocity.x = 0;
+                else twoFrameCheck++;
                 //applyForce(new PVector(10,0));
             } else if (keyCode == RIGHT){
                 keyPressed = false;
+                if (twoFrameCheck == 2)
                 velocity.x = 0;
+                else twoFrameCheck++;
                 //applyForce(new PVector(-10,0));
             }
         }
