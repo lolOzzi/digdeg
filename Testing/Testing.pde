@@ -1,3 +1,36 @@
+  Player p = new Player();
+
+  public void settings() {
+    fullScreen();
+
+  }
+
+  public void draw(){
+    background(64);
+    ellipse(mouseX, mouseY, 20, 20);
+    rect(0, height-100, width, 100);
+    if(keyPressed == true){
+        if (key == 'a' || key == 'A'){
+            p.velocity.x = -10;
+        } else if (key == 'd' || key == 'D'){
+            p.velocity.x = 10;
+        } else if ((key == 'w' || key == 'W') && p.location.y > height-110){
+                p.applyForce(new PVector(0, -10));            
+            }
+      
+    }
+    
+    p.update();
+    p.display();
+  }
+
+
+
+
+
+
+
+
 public class Player{
 
     PVector location, velocity, acceleration, gravity;
@@ -17,28 +50,14 @@ public class Player{
 
     void update(){
         checkEdges();
-            if(keyPressed == true){
-        if (key == 'a' || key == 'A'){
-            p.velocity.x = -10;
-        } else if (key == 'd' || key == 'D'){
-            p.velocity.x = 10;
-        } else if ((key == 'w' || key == 'W') && p.location.y > height-110){
-                p.applyForce(new PVector(0, -10));            
-            }
-        }
-        else if (keyPressed == false){
-            if (key == 'a' || key == 'A'){
-                p.velocity.x = 0;
-            } else if (key == 'd' || key == 'D'){
-                p.velocity.x = 0;
-            }
-        }
         velocity.add(acceleration);
         location.add(velocity);
+
         acceleration.mult(0);
         if(location.y < height-110){
             applyForce(gravity);
         }
+
     }
 
     public void display(){

@@ -1,10 +1,7 @@
 public class Player{
 
-    PVector location;
-    PVector velocity;
-    PVector acceleration;
-    PVector gravity;
-    int twoFrameCheck;
+    PVector location, velocity, acceleration, gravity;
+    boolean left = false, right = false;
 
     Player()
     {
@@ -20,53 +17,34 @@ public class Player{
 
     void update(){
         checkEdges();
-        keyPressed();
+            if(keyPressed == true){
+        if (key == 'a' || key == 'A'){
+            p.velocity.x = -10;
+        } else if (key == 'd' || key == 'D'){
+            p.velocity.x = 10;
+        } else if ((key == 'w' || key == 'W') && p.location.y > height-110){
+                p.applyForce(new PVector(0, -10));            
+            }
+        }
+        else if (keyPressed == false){
+            if (key == 'a' || key == 'A'){
+                p.velocity.x = 0;
+            } else if (key == 'd' || key == 'D'){
+                p.velocity.x = 0;
+            }
+        }
         velocity.add(acceleration);
         location.add(velocity);
-        keyReleased();
         acceleration.mult(0);
         if(location.y < height-110){
             applyForce(gravity);
         }
-
     }
 
     public void display(){
-
         rect(location.x, location.y, 10, 10);
     }
-
-    void keyPressed(){
-        if (key == CODED && keyPressed == true){
-            if (keyCode == LEFT){
-                velocity.x = -10;
-                twoFrameCheck = 0;
-            } else if (keyCode == RIGHT){
-                velocity.x = 10;
-                twoFrameCheck = 0;
-            } else if (keyCode == UP && location.y > height-110){
-                applyForce(new PVector(0, -10));
-            }
-        }
-    }
-
-    void keyReleased() {
-        if (key == CODED){
-            if (keyCode == LEFT){
-                keyPressed = false;
-                if (twoFrameCheck == 2)
-                velocity.x = 0;
-                else twoFrameCheck++;
-                //applyForce(new PVector(10,0));
-            } else if (keyCode == RIGHT){
-                keyPressed = false;
-                if (twoFrameCheck == 2)
-                velocity.x = 0;
-                else twoFrameCheck++;
-                //applyForce(new PVector(-10,0));
-            }
-        }
-    }
+    
 
     void checkEdges(){
         if (location.y > height-110)
