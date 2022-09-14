@@ -1,24 +1,41 @@
 class SceneManager {
   QScreen qS;
-  int cool;
   boolean spacePressed;
   boolean spaceReleased;
   boolean mPressed;
+  boolean qSMode;
+  boolean dMode;
 
   public SceneManager() {
-    qS = new QScreen();
-    cool = 0;
-    spaceReleased = true;
+    sceneSetup();
   }
 
   public void update() {
-    spacePressed = false;
-    spacePressed();
-    qS.update(this);
-    qS.display();
-    println(spacePressed);
-    if (qS.getDone() && spacePressed) {
+
+    if (dMode) {
+      startup();
+    }
+
+    if (qSMode) {
+      spacePressed = false;
+      spacePressed();
+      qS.update(this);
+      qS.display();
+      println(spacePressed);
+      if (qS.getDone() && spacePressed) {
+        qSMode = false;
+        dMode = true;
+        sceneSetup();
+      }
+    }
+  }
+  public void sceneSetup() {
+    if (qSMode) {
       qS = new QScreen();
+      spaceReleased = true;
+    } else {
+      dMode = true;
+      startup();
     }
   }
 
