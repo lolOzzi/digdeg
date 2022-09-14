@@ -3,6 +3,8 @@ public class Player{
     PVector location, velocity, acceleration, gravity;
     boolean left = false, right = false;
 
+
+
     Player()
     {
         location = new PVector(100, 790);
@@ -17,28 +19,24 @@ public class Player{
 
     void update(){
         checkEdges();
-            if(keyPressed == true){
-        if (key == 'a' || key == 'A'){
-            p.velocity.x = -10;
-        } else if (key == 'd' || key == 'D'){
-            p.velocity.x = 10;
-        } else if ((key == 'w' || key == 'W') && p.location.y > height-110){
-                p.applyForce(new PVector(0, -10));            
-            }
-        }
-        else if (keyPressed == false){
-            if (key == 'a' || key == 'A'){
-                p.velocity.x = 0;
-            } else if (key == 'd' || key == 'D'){
-                p.velocity.x = 0;
-            }
-        }
         velocity.add(acceleration);
         location.add(velocity);
         acceleration.mult(0);
         if(location.y < height-110){
             applyForce(gravity);
         }
+    }
+    
+    void moveLeft(){
+      p.velocity.x = -10;
+    } void moveRight(){
+      p.velocity.x = 10;
+    } void stopLeft(){
+      p.velocity.x = 0;
+    } void stopRight(){
+      p.velocity.x = 0;
+    } void moveUp(){
+      p.applyForce(new PVector(0, -10)); 
     }
 
     public void display(){
@@ -50,4 +48,5 @@ public class Player{
         if (location.y > height-110)
             velocity.y = 0;
     }
+
 }
