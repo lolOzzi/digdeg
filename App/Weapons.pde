@@ -6,7 +6,9 @@ public class Weapons{
     float cooldown;
     
 
-    void attack(){
-      print("Fuck You");
+    void attack(PVector pLocation){
+      if(facingLeft == true) 
+      rect(pLocation.x, pLocation.y, -20, 10); // Width = Range, Range mod Left subtraheres med Player størrelse
+      else rect(pLocation.x, pLocation.y, 30, 10);
     }
 }

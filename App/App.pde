@@ -1,5 +1,6 @@
   Player p = new Player();
   Weapons equipped = new Weapons();
+  Enemy f = new Enemy();
 
   public void settings() {
     fullScreen();
@@ -11,10 +12,9 @@
     rect(0, height-100, width, 100);
     keyCheck();
     p.update();
+    f.update();
     p.display();
-    
-    
-
+    f.display();
   }
   
   
@@ -28,7 +28,7 @@
               equipped.facingLeft = false;
           } else if ((key == 'w' || key == 'W') && p.location.y > height-110){
                   p.moveUp();           
-              }if (key == ' ') equipped.attack();
+              }if (key == ' ') equipped.attack(p.location);
           }
       else if (keyPressed == false){
               if (key == 'a' || key == 'A'){
