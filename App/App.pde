@@ -1,9 +1,11 @@
   Player p = new Player();
   Weapons equipped = new Weapons();
-  Enemy f = new Enemy();
-
+  Enemy ene = new Enemy();
+  ArrayList<Enemy> fs = new ArrayList<Enemy>();
+  
   public void settings() {
     fullScreen();
+    fs.add(ene);
   }
 
   public void draw(){
@@ -12,9 +14,12 @@
     rect(0, height-100, width, 100);
     keyCheck();
     p.update();
-    f.update();
     p.display();
-    f.display();
+    
+    for(Enemy f : fs) {
+    f.update();
+    f.display();}
+    
   }
   
   
@@ -28,7 +33,26 @@
               equipped.facingLeft = false;
           } else if ((key == 'w' || key == 'W') && p.location.y > height-110){
                   p.moveUp();           
-              }if (key == ' ') equipped.attack(p.location);
+              }if (key == ' ') {  
+              equipped.attack(p.location, p.size.x);
+              if (equipped.facingLeft == true){
+                if ((p.location.x + equipped.range) <= ene.location.x && ene.location.x <= p.location.x)
+                  {
+                    ene.hp -= equipped.damage;
+                    if (ene.hp >= 0)
+                      fs.remove(0);
+                  }
+                
+              }
+              else{
+                if (p.location.x <= ene.location.x && ene.location.x <= (p.location.x + equipped.range))
+                  {
+                    ene.hp -= equipped.damage;
+                    if (ene.hp >= 0)
+                      fs.remove(0);
+                  }
+              }
+            }
           }
       else if (keyPressed == false){
               if (key == 'a' || key == 'A'){
