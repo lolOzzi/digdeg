@@ -1,11 +1,12 @@
-  Player p = new Player();
-  Weapons equipped = new Weapons();
-  Enemy ene = new Enemy();
-  ArrayList<Enemy> fs = new ArrayList<Enemy>();
+  Player p;
+  Weapons equipped;
+  Enemy ene;
+  ArrayList<Enemy> fs;
+  
   
   public void settings() {
     fullScreen();
-    fs.add(ene);
+    startup();
   }
 
   public void draw(){
@@ -18,8 +19,21 @@
     
     for(Enemy f : fs) {
     f.update();
-    f.display();}
+    f.display();
+    if ((f.location.x <= p.location.x && p.location.x < (f.location.x + f.size.x)) || (f.location.x <= (p.location.x + p.size.x) && (p.location.x + p.size.x) < (f.location.x + f.size.x))){
+      print("Player Died");
+      startup();
+    }
     
+    }
+  }
+  
+  void startup(){
+    p = new Player();
+    equipped = new Weapons();
+    ene = new Enemy();
+    fs = new ArrayList<Enemy>();
+    fs.add(ene);
   }
   
   
