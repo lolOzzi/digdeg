@@ -36,7 +36,7 @@
               }if (key == ' ') {  
               equipped.attack(p.location, p.size.x);
               if (equipped.facingLeft == true){
-                if ((p.location.x + equipped.range) <= ene.location.x && ene.location.x <= p.location.x)
+                if ((p.location.x + equipped.range) <= ene.location.x && ene.location.x <= p.location.x || (p.location.x + equipped.range) <= ene.location.x + ene.size.x && ene.location.x + ene.size.x <= p.location.x)
                   {
                     ene.hp -= equipped.damage;
                     if (ene.hp >= 0)
@@ -45,7 +45,7 @@
                 
               }
               else{
-                if (p.location.x <= ene.location.x && ene.location.x <= (p.location.x + equipped.range))
+                if ((p.location.x <= ene.location.x + ene.size.x && ene.location.x + ene.size.x <= (p.location.x + equipped.range)) || p.location.x <= ene.location.x && ene.location.x <= (p.location.x + equipped.range))
                   {
                     ene.hp -= equipped.damage;
                     if (ene.hp >= 0)
