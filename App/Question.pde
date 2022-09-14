@@ -1,6 +1,6 @@
-
 class Question {
-
+  String cat;
+  int lvl;
   String qn;
   String ans;
   String[] opts;
@@ -8,17 +8,24 @@ class Question {
   ArrayList<QBox> qbList = new ArrayList<>();
 
 
-  public Question(String qn, String ans, String[] opts) {
+  public Question(String cat, int lvl, String qn, String ans, String[] opts) {
     this.qn = qn;
     this.ans = ans;
     this.opts = opts;
+    this.cat = cat;
+    this.lvl = lvl;
     int size = 50;
     for (int i = 0; i < opts.length; i++) {
       qbList.add(new QBox(100, 100*i, size, opts[i]));
     }
   }
   public void display() {
-    text(qn, 100, 100);
+    if (!cat.equals("Problemregning")) {
+      PShape formula = PTeX.toPShape(qn, 100, color(64), color(255));
+      shape(formula, 100, 50);
+    } else {
+      text(qn, 100, 150);
+    }
   }
   public String getQn() {
     return qn;

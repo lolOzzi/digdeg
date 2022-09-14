@@ -1,15 +1,19 @@
+import latex.*;
 
-QScreen qS;
+SceneManager sM;
 
 void setup() {
   fullScreen(2);
-  //size(500, 500);
-  qS = new QScreen();
+  sM = new SceneManager();
 }
 
 void draw() {
   background(64);
   ellipse(mouseX, mouseY, 20, 20);
-  qS.display();
-  qS.update();
+  sM.update();
+}
+
+
+void mousePressed() {
+  sM.mPressed = true;
 }
