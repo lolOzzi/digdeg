@@ -4,13 +4,13 @@ float posX =  displayWidth/numberOfPlatforms;
 float screenWidthDifference = displayWidth/1920f;
 float screenHeightDifference = displayHeight/1080f;
 
-public StageGenerator ()
+public StageGenerator () {
 
     for (float i = 0;i <= numberOfPlatforms;i++){
 
         if (i == 0) {
          rectMode(CORNER);
-         rect(posX*i,1200, 300*screenWidthDifference, 40);
+         rect(posX*i,880*screenHeightDifference, 300*screenWidthDifference, 40);
          
         }else if (i < numberOfPlatforms){
         rectMode(CORNER);
@@ -19,7 +19,7 @@ public StageGenerator ()
         
         else {
          rectMode(CORNER);
-         rect(posX*i,1200, -200*random(1,2), 40);
+         rect(posX*i,880*screenHeightDifference, -300*screenWidthDifference, 40);
         }
-
+    }
 }
