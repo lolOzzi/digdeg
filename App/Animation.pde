@@ -20,7 +20,7 @@ class Animation { //<>//
   }
 
   void display(float xpos, float ypos, float xsize, float ysize) {
-    if (cFCount >= (float) frameRate / (float) framerate) {
+    if (cFCount >= ((float) frameRate / (float) framerate)) {
       frame = (frame+1) % imageCount;
       cFCount = 0;
     } else {

@@ -1,5 +1,5 @@
 public class Player extends Character {
-
+  HashMap<String, Animation> pAnimList = new HashMap<>();
   Player()
   {
     location = new PVector(100, 790);
@@ -7,6 +7,7 @@ public class Player extends Character {
     size = new PVector(48, 60);
     speed = 1f;
     img = loadImage("imgs/player/player.png");
+    animSetup();
   }
 
   void moveLeft() {
@@ -24,7 +25,12 @@ public class Player extends Character {
   void moveUp() {
     p.applyForce(new PVector(0, -10));
   }
-
+  void animSetup() {
+    pAnimList.put("Run", new Animation("imgs/player/run/sprite_", ".png", 5, 15, false));
+    pAnimList.put("Run F", new Animation("imgs/player/run/sprite_", ".png", 5, 15, true));
+    pAnimList.put("Idle", new Animation("imgs/player/idle/sprite_", ".png", 2, 3, false));
+    pAnimList.put("Idle F", new Animation("imgs/player/idle/sprite_", ".png", 2, 3, true));
+  }
   void display() {
     //rect(location.x, location.y, size.x, size.y);
 

@@ -9,8 +9,8 @@ Slime mor;
 ArrayList<Enemy> enemies;
 SceneManager sM;
 
-HashMap<String, Animation> pAnimList = new HashMap<>();
-HashMap<String, Animation> sAnimList = new HashMap<>();
+
+
 Animation anim;
 Helper h = new Helper();
 
@@ -25,14 +25,7 @@ public void setup() {
 }
 void animSetup() {
   anim = new Animation("imgs/rin/rinsjov/frame_", "_delay-0.05s.gif", 238, 20, false);
-  pAnimList.put("Run", new Animation("imgs/player/run/sprite_", ".png", 5, 15, false));
-  pAnimList.put("Run F", new Animation("imgs/player/run/sprite_", ".png", 5, 15, true));
-  pAnimList.put("Idle", new Animation("imgs/player/idle/sprite_", ".png", 2, 3, false));
-  pAnimList.put("Idle F", new Animation("imgs/player/idle/sprite_", ".png", 2, 3, true));
 
-  sAnimList.put("Walk", new Animation("imgs/slime/walk/sprite_", ".png", 2, 0.5, false));
-  sAnimList.put("Walk F", new Animation("imgs/slime/walk/sprite_", ".png", 2, 0.5, true));
-  
 }
 void checkCollision(Enemy f) {
   if ((p.location.y <= f.location.y && f.location.y < (p.location.y + p.size.y)) || (f.location.y <= p.location.y && p.location.y < (f.location.y + f.size.y))) {
@@ -51,7 +44,7 @@ void checkCollision(Enemy f) {
 public void draw() {
   background(64);
   ellipse(mouseX, mouseY, 20, 20);
-  //anim.display(0,0);
+  anim.display(0,0);
   if (sM.dMode) {
     rect(0, height-100, width, 100);
     keyCheck();
