@@ -34,17 +34,17 @@ class StartMenu{
     size.add(new PVector(45*20, 13*20)); // size Controls
     size.add(new PVector(31*20, 13*20)); // size Quit
     size.add(new PVector(65*20, 22*20)); // size Titel
-    pos.add(new PVector(0, 1200)); // pos Shop
+    pos.add(new PVector(0, 900*screenHeightDifference)); // pos Shop
     pos.add(new PVector((displayWidth/2)-31*14, (displayHeight/2)-13*14)); // pos Start
-    pos.add(new PVector(850, 1200)); // pos Controls
-    pos.add(new PVector(1950, 1200)); // pos Quit
+    pos.add(new PVector(637.5*screenWidthDifference, (900*screenHeightDifference))); // pos Controls
+    pos.add(new PVector(1462.5*screenWidthDifference, 900*screenHeightDifference)); // pos Quit
     pos.add(new PVector((displayWidth/2)-65*10, 80)); // pos Titel
   }
 
   void display () {
     ellipse(mouseX, mouseY, 20, 20);
     checkMouse();
-    for (int i = 0; i < images.size()-1; i++) {
+    for (int i = 0; i < images.size(); i++) {
      
         image(images.get(i), pos.get(i).x, pos.get(i).y, size.get(i).x,size.get(i).y); // draw Images 
         
