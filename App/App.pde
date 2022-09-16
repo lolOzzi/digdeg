@@ -9,8 +9,6 @@ Slime mor;
 ArrayList<Enemy> enemies;
 SceneManager sM;
 
-
-
 Animation anim;
 Helper h = new Helper();
 
@@ -82,10 +80,8 @@ void keyCheck() {
   if (keyPressed == true) {
     if (key == 'a' || key == 'A') {
       p.moveLeft();
-      equipped.facingLeft = true;
     } else if (key == 'd' || key == 'D') {
       p.moveRight();
-      equipped.facingLeft = false;
     } else if ((key == 'w' || key == 'W') && p.location.y > height-(100 + p.size.y)) {
       p.moveUp();
     }
@@ -112,7 +108,7 @@ void checkHit(Enemy f) {
 
   if ((p.location.y <= f.location.y && f.location.y < (p.location.y + p.size.y)) || (f.location.y <= p.location.y && p.location.y < (f.location.y + f.size.y))) {
 
-    if (equipped.facingLeft == true) {
+    if (p.facingLeft == true) {
       if ((p.location.x - equipped.range) <= f.location.x && f.location.x <= p.location.x || (p.location.x - equipped.range) <= f.location.x + f.size.x && f.location.x + f.size.x <= p.location.x)
       {
         f.hp -= equipped.damage;
@@ -121,7 +117,7 @@ void checkHit(Enemy f) {
       }
     }
 
-    if (equipped.facingLeft == false) {
+    if (p.facingLeft == false) {
       if ((p.location.x <= f.location.x + f.size.x && f.location.x + f.size.x <= (p.location.x + equipped.range)) || p.location.x <= f.location.x && f.location.x <= (p.location.x + equipped.range))
       {
         f.hp -= equipped.damage;

@@ -17,6 +17,7 @@ public class Slime extends Enemy {
     location = new PVector(xCor, 300f);
     velocity = new PVector(speed, 0);
     animSetup();
+    turn();
   }
   Slime(int hp, float speed, int location, PVector size) {
     this.hp = hp;
@@ -26,15 +27,17 @@ public class Slime extends Enemy {
     velocity = new PVector(speed, 0);
     animSetup();
   }
-
-
+  
+  void turn() {
+    velocity.x *= -1;
+  }
   void display() {
 
     if ( velocity.x == 0) {
       sAnimList.get("Walk").display(location.x, location.y, size.x, size.y);
-    } else if (equipped.facingLeft && velocity.x != 0) {
+    } else if (this.facingLeft && velocity.x != 0) {
       sAnimList.get("Walk F").display(location.x, location.y, size.x, size.y);
-    } else if (!equipped.facingLeft && velocity.x == 0) {
+    } else if (!this.facingLeft && velocity.x == 0) {
       sAnimList.get("Walk").display(location.x, location.y, size.x, size.y);
     } else {
       sAnimList.get("Walk").display(location.x, location.y, size.x, size.y);
@@ -43,7 +46,7 @@ public class Slime extends Enemy {
 
   void animSetup() {
 
-    sAnimList.put("Walk", new Animation("imgs/slime/walk/sprite_", ".png", 2, 1, false));
-    sAnimList.put("Walk F", new Animation("imgs/slime/walk/sprite_", ".png", 2, 1, true));
+    sAnimList.put("Walk", new Animation("imgs/slime/walk/sprite_", ".png", 2, 3, false));
+    sAnimList.put("Walk F", new Animation("imgs/slime/walk/sprite_", ".png", 2, 3, true));
   }
 }

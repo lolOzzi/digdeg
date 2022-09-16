@@ -34,12 +34,12 @@ public class Player extends Character {
   void display() {
     //rect(location.x, location.y, size.x, size.y);
 
-    if (equipped.facingLeft && velocity.x == 0) {
+    if (this.facingLeft && velocity.x == 0) {
       pAnimList.get("Idle F").display(location.x, location.y, size.x, size.y);
       //image(h.flip(img), location.x, location.y, size.x, size.y);
-    } else if (equipped.facingLeft && velocity.x != 0) {
+    } else if (this.facingLeft && velocity.x != 0) {
       pAnimList.get("Run F").display(location.x, location.y, size.x, size.y);
-    } else if (!equipped.facingLeft && velocity.x == 0) {
+    } else if (!this.facingLeft && velocity.x == 0) {
       pAnimList.get("Idle").display(location.x, location.y, size.x, size.y);
     } else {
       pAnimList.get("Run").display(location.x, location.y, size.x, size.y);
