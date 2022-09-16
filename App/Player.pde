@@ -1,4 +1,14 @@
-public class Player extends Character{
+public class Player extends Character {
+  HashMap<String, Animation> pAnimList = new HashMap<>();
+  Player()
+  {
+    location = new PVector(100, 790);
+    velocity = new PVector(0, 0);
+    size = new PVector(48, 60);
+    speed = 1f;
+    img = loadImage("imgs/player/player.png");
+    animSetup();
+  }
 
     Player()
     {

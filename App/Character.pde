@@ -1,4 +1,4 @@
-public class Character{
+public class Character {
   PVector location, velocity, size;
   float speed;
   PVector gravity = new PVector(0, 0.25f);

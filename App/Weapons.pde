@@ -2,13 +2,12 @@ public class Weapons{
 
 
     int damage, speed, range;
-    boolean facingLeft; // True er venstre - False er Højre
     float cooldown, startCD;
     boolean canAttack = true;
     
 
     void attack(PVector pLocation, float playerWidth){
-      if(facingLeft == true) 
+      if(p.facingLeft == true) 
       rect(pLocation.x, pLocation.y, (range *-1) + playerWidth, 10); // Width = Range, Range mod Left subtraheres med Player størrelse
       else rect(pLocation.x, pLocation.y, range, 10);
       startCD = millis();
