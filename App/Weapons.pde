@@ -1,7 +1,5 @@
 public class Weapons{
-
-
-    int damage, speed, range;
+    int damage, range, cost;
     float cooldown, startCD;
     boolean canAttack = true;
     
@@ -22,17 +20,16 @@ public class Weapons{
     
     Weapons(){
       damage = 10;
-      speed = 1;
       range = 50;
       cooldown = 2;
       startCD = millis();
     }
     
-    Weapons(int damage, int speed, int range, float cooldown){
+    Weapons(int damage, int range, float cooldown, int cost){
       this.damage = damage;
-      this.speed = speed;
       this.range = range;
       this.cooldown = cooldown;
+      this.cost = cost;
       startCD = millis();
     }
 }
