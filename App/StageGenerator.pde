@@ -1,5 +1,5 @@
 public class StageGenerator {
- float numberOfPlatforms = 4;
+float numberOfPlatforms = 4;
 float posX =  displayWidth/numberOfPlatforms;
 float firstPlatform =  displayWidth/4;
 float secondPlatform =  (displayWidth/2)+firstPlatform;

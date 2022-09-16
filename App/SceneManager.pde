@@ -4,15 +4,28 @@ class SceneManager {
   boolean spaceReleased;
   boolean mPressed;
   boolean qSMode;
-  boolean dMode;
+  boolean gameMode;
+  boolean smMode;
+  boolean shMode;
+  boolean controlMode;
 
   public SceneManager() {
     sceneSetup();
   }
 
   public void update() {
-
-    if (dMode) {
+    
+    if (controlMode){
+      
+    }
+    
+    if (smMode) {
+      // indsæt start screen class
+    }
+    if (shMode) {
+      // indsæt christians shop class
+    }
+    if (gameMode) {
       startup();
     }
 
@@ -24,7 +37,7 @@ class SceneManager {
       println(spacePressed);
       if (qS.getDone() && spacePressed) {
         qSMode = false;
-        dMode = true;
+        gameMode = true;
         sceneSetup();
       }
     }
@@ -33,9 +46,13 @@ class SceneManager {
     if (qSMode) {
       qS = new QScreen();
       spaceReleased = true;
-    } else {
-      dMode = true;
+    } else if (gameMode){
       startup();
+      }else if(shMode) {
+      }else if (controlMode){
+      } else {
+     smMode = true;
+     
     }
   }
 

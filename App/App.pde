@@ -34,7 +34,7 @@ void draw() {
   background(64);
   ellipse(mouseX, mouseY, 20, 20);
   //anim.display(0,0);
-  if (sM.dMode) {
+  if (sM.gameMode) {
     sG.display(); 
     //rect(0, height-100, width, 100);
     p.update();

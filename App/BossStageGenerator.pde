@@ -1,3 +1,4 @@
+/*
 public class BossStageGenerator {
 float numberOfPlatforms = 4;
 float posX =  displayWidth/numberOfPlatforms;
@@ -11,7 +12,7 @@ ArrayList<PVector> bossLocations = new ArrayList<>();
 ArrayList<PVector> bossSizes = new ArrayList<>();
   
 
-void bossStageGenerate BossStageGenerator () {
+void bossStageGenerate  () {
 for (float i = 0;i <= numberOfPlatforms;i++){
 
         if (i == 0) {
@@ -60,3 +61,4 @@ void display(){
     }
   }
 }
+*/
