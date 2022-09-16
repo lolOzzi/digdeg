@@ -21,8 +21,8 @@ public class StageGenerator {
         } 
         
         else {
-        locations.add(new PVector(ewr*numberOfPlatforms, displayHeight - 300));
-        sizes.add(new PVector(-200*random(1,2), 40));
+        locations.add(new PVector(ewr*numberOfPlatforms - 300, displayHeight - 300));
+        sizes.add(new PVector(200*1.5, 40));
       }
     
     }
@@ -45,7 +45,7 @@ public class StageGenerator {
     }
     else {
     rectMode(CORNER);
-    fill(255, 0, 0);
+    fill(0, 255, 0);
     rect(locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
     fill(255);
     //println(i);

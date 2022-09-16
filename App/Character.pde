@@ -4,6 +4,16 @@ public class Character {
   PVector gravity = new PVector(0, 0.25f);
   PVector acceleration = new PVector(0, 0);
   boolean hitGround;
+  boolean facingLeft;
+  PImage img;
+
+  void checkDirection() {
+    if (velocity.x < 0) {
+      facingLeft = true;
+    } else if (velocity.x > 0) {
+      facingLeft = false;
+    }
+  }
   
   
     void applyForce(PVector force){
@@ -19,6 +29,7 @@ public class Character {
         if(hitGround == false){
             applyForce(gravity);
         }
+        checkDirection();
     }
     
     

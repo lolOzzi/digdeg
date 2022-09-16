@@ -26,14 +26,14 @@ public void setup() {
   size(400, 400);
 }
 void animSetup() {
-  anim = new Animation("imgs/rin/rinsjov/frame_", "_delay-0.05s.gif", 238, 20, false);
+  //anim = new Animation("imgs/rin/rinsjov/frame_", "_delay-0.05s.gif", 238, 20, false);
+}
 
 
-public void draw() {
+void draw() {
   background(64);
-
   ellipse(mouseX, mouseY, 20, 20);
-  anim.display(0,0);
+  //anim.display(0,0);
   if (sM.dMode) {
     sG.display(); 
     //rect(0, height-100, width, 100);
@@ -41,10 +41,6 @@ public void draw() {
     p.display();
     p.keyCheck();
     p.collisionCheck();
-   
-    //println(width);
-
-
   } else if (sM.qSMode) {
     sM.update();
   }
