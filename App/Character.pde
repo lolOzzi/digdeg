@@ -1,8 +1,10 @@
 public class Character{
   PVector location, velocity, size;
   float speed;
-  PVector gravity = new PVector(0, 0.1f);
+  PVector gravity = new PVector(0, 0.5f);
   PVector acceleration = new PVector(0, 0);
+  PImage img;
+  
   
     void applyForce(PVector force){
         acceleration.add(force);
