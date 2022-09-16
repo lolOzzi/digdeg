@@ -44,7 +44,10 @@ public class StageGenerator {
       //print(i);
     }
     else {
+    rectMode(CORNER);
+    fill(255, 0, 0);
     rect(locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
+    fill(255);
     //println(i);
     }
 

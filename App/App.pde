@@ -14,10 +14,10 @@ StageGenerator sG;
 
 public void settings() {
   fullScreen();
-  sM = new SceneManager();
   sG = new StageGenerator();
-  sM.update();
   sG.generate();
+  sM = new SceneManager();
+  sM.update();
 }
 
 

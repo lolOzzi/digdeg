@@ -1,7 +1,7 @@
 public class Character{
   PVector location, velocity, size;
   float speed;
-  PVector gravity = new PVector(0, 0.3f);
+  PVector gravity = new PVector(0, 0.25f);
   PVector acceleration = new PVector(0, 0);
   boolean hitGround;
   
@@ -44,7 +44,8 @@ public class Character{
             location.y = sG.locations.get(i).y - size.y;
             hitGround = true;
             ellipse(sG.locations.get(i).x, sG.locations.get(i).y, 10, 10);
-        } else hitGround = false;
+        }
+      else hitGround = false;
       
     }
   }

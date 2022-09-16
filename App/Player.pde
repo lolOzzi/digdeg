@@ -6,6 +6,8 @@ public class Player extends Character{
         velocity = new PVector(0, 0);
         size = new PVector(10, 10);
         speed = 0.5f;
+        for (PVector ls : sG.locations)
+          println(ls.x + " " + ls.y);
     }
     
     void collisionCheck(){
@@ -50,7 +52,7 @@ public class Player extends Character{
           equipped.facingLeft = false;
         } if ((key == 'w' || key == 'W') && hitGround == true) {
           moveUp();
-        } else if (key == 'w' || key == 'W') println(hitGround);
+        } else if (key == 'w' || key == 'W');
         if (key == ' ') {
           equipped.countdown();
           if (equipped.canAttack == true) {
