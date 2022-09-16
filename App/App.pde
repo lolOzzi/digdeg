@@ -16,6 +16,7 @@ ArrayList<Enemy> enemies;
 SceneManager sM;
 StageGenerator sG;
 Shop store;
+StartMenu sMe;
 
 
 Animation anim;
@@ -35,6 +36,7 @@ public void setup() {
   size(400, 400);
   ownedWeapons = new ArrayList<>();
   ownedWeapons.add(stone);
+  sMe.confMenu();
 }
 void animSetup() {
   //anim = new Animation("imgs/rin/rinsjov/frame_", "_delay-0.05s.gif", 238, 20, false);
@@ -42,8 +44,8 @@ void animSetup() {
 
 
 void draw() {
-  //  background(64);
-  /*
+  //background(64);
+  
   ellipse(mouseX, mouseY, 20, 20);
   //anim.display(0,0);
   if (sM.gameMode) {
@@ -56,7 +58,6 @@ void draw() {
   } else if (sM.qSMode) {
     sM.update();
   }
-  */
   store.update();
 }
 

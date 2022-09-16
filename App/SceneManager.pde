@@ -20,10 +20,11 @@ class SceneManager {
     }
     
     if (smMode) {
-      // indsæt start screen class
+      sMe = new StartMenu();
+      sMe.display();
     }
     if (shMode) {
-      // indsæt christians shop class
+      store.update();
     }
     if (gameMode) {
       startup();

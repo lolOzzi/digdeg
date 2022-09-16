@@ -45,7 +45,7 @@ public class Player extends Character {
       if ((f.location.x <= p.location.x && p.location.x < (f.location.x + f.size.x)) || (f.location.x <= (p.location.x + p.size.x) && (p.location.x + p.size.x) < (f.location.x + f.size.x))) {
         print("Player Died");
         sM.qSMode = true;
-        sM.dMode = false;
+        sM.gameMode = false;
         sM.sceneSetup();
         sM.update();
       }
