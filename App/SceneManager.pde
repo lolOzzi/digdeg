@@ -14,14 +14,15 @@ class SceneManager {
     smMode = false;
     shMode = false;
     qSMode = false;
+    controlMode = false;
     sceneSetup();
-
   }
 
   public void update() {
     
     if (controlMode){
-      
+      cM.confMenu();
+      cM.display();
     }
     
     if (smMode) {

@@ -16,6 +16,7 @@ SceneManager sM;
 StageGenerator sG;
 Shop store;
 StartMenu sMe;
+Controls cM;
 
 
 Animation anim;
@@ -26,6 +27,7 @@ public void setup() {
   sMe = new StartMenu();
   sG = new StageGenerator();
   sG.generate();
+  cM = new Controls();
   store = new Shop();
   store.weaponList();
   equipped = stone;
@@ -35,16 +37,15 @@ public void setup() {
   size(400, 400);
   ownedWeapons = new ArrayList<>();
   ownedWeapons.add(stone);
+ 
   
 }
-
-
 
 void draw() {
   background(64);
   ellipse(mouseX, mouseY, 20, 20);
-  sM.update();
-    
+  sM.update();  
+  
 }
 
 void startup() {

@@ -14,8 +14,8 @@ public class Shop{
   
   
   void display(){
-    float multiplierWidth = displayWidth/1080;
-    float multiplierHeight = displayHeight/1080;
+    float multiplierWidth = displayWidth/1920f;
+    float multiplierHeight = displayHeight/1080f;
     for (int i = 0; i < swords.length; i++){
       fill(50);
       rect(i*distance, 0, distance, displayHeight);
@@ -28,12 +28,12 @@ public class Shop{
       else if (i == 2) text("Fire Sword", distance*i + 100*multiplierWidth, 600*multiplierHeight);
       else if (i == 3) text("Giant Sword", distance*i + 100*multiplierWidth, 600*multiplierHeight);
       textSize(40*multiplierWidth);
-      text(new String("Damage: " + str(swords[i].damage)), (distance*i + 100)*multiplierWidth, 600*multiplierHeight + 100*1);
-      text(new String("Range: " + str(swords[i].range)), (distance*i + 100)*multiplierWidth, 600*multiplierHeight + 100*2);
-      text(new String("Cooldown: " + str(swords[i].cooldown)), (distance*i + 100)*multiplierWidth, 600*multiplierHeight + 100*3);
+      text(new String("Damage: " + str(swords[i].damage)), ((distance-distance/4)*i)*multiplierWidth, 600*multiplierHeight + 100*1);
+      text(new String("Range: " + str(swords[i].range)), ((distance-distance/4)*i)*multiplierWidth, 600*multiplierHeight + 100*2);
+      text(new String("Cooldown: " + str(swords[i].cooldown)), ((distance-distance/4)*i)*multiplierWidth, 600*multiplierHeight + 100*3);
       isSwordOwned(swords[i]);
-      if (swordOwned == true) text("Owned", (distance*i + 100)*multiplierWidth, 600*multiplierHeight + 100*4);
-      else text(new String("Cost: " + str(swords[i].cost)), (distance*i + 100)*multiplierWidth, 600*multiplierHeight + 100*4);
+      if (swordOwned == true) text("Owned", ((distance-distance/4)*i)*multiplierWidth, 600*multiplierHeight + 100*4);
+      else text(new String("Cost: " + str(swords[i].cost)), ((distance-distance/4)*i)*multiplierWidth, 600*multiplierHeight + 100*4);
 
     }
   }
