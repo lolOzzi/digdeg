@@ -44,7 +44,7 @@ class StartMenu{
      
         image(images.get(i), pos.get(i).x, pos.get(i).y, size.get(i).x,size.get(i).y); // draw Images 
        
-        if (sM.mPressed && OverRect(pos.get(i).x, pos.get(i).y, size.get(i).x,size.get(i).y)){
+        if (sM.mPressed && h.OverRect(pos.get(i).x, pos.get(i).y, size.get(i).x,size.get(i).y)){
            sM.mPressed = false;
           if (i == 0){
           sM.smMode = false;
@@ -69,15 +69,6 @@ class StartMenu{
            exit(); 
           }
     }
-    }
-  }
-
-  public boolean OverRect(float posX, float posY, float sizeX, float sizeY) {
-    if (mouseX >= posX && mouseX <= posX+sizeX &&
-      mouseY >= posY && mouseY <= posY+sizeY) {
-      return true;
-    } else {
-      return false;
     }
   }
 }

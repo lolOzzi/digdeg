@@ -1,11 +1,12 @@
 class Controls{
   PImage controlPicture;
-  PImage quit;
+  PImage back;
   float screenWidthDifference;
   float screenHeightDifference;
   ArrayList<PImage> controlImages;
   ArrayList<PVector> controlSize;
   ArrayList<PVector> controlPos;
+  
   
   
   Controls(){
@@ -19,11 +20,11 @@ class Controls{
     controlSize = new ArrayList<>();
     controlPos = new ArrayList<>();
     controlImages.add(loadImage("imgs/Startmenu/controlPicture.png"));
-    controlImages.add(loadImage("imgs/Startmenu/Quit.png"));
+    controlImages.add(loadImage("imgs/Startmenu/Back.png"));
     controlSize.add(new PVector(31*16, 13*16)); // size controlPicture 
-    controlSize.add(new PVector(31*16, 13*16)); // size Quit
+    controlSize.add(new PVector(31*16, 13*16)); // size Back
     controlPos.add(new PVector((displayWidth/2) - (controlSize.get(0).x)/2, (displayHeight/2) - (controlSize.get(0).y)/2)); // pos controlPicture
-    controlPos.add(new PVector(displayWidth-controlSize.get(1).x, displayHeight-controlSize.get(1).y)); // pos Quit
+    controlPos.add(new PVector(displayWidth-controlSize.get(1).x, displayHeight-controlSize.get(1).y)); // pos Back
   }
 
   void display () {
@@ -31,7 +32,7 @@ class Controls{
      
         image(controlImages.get(i), controlPos.get(i).x, controlPos.get(i).y, controlSize.get(i).x,controlSize.get(i).y); // draw Images 
         
-        if (sM.mPressed && OverRect(controlPos.get(i).x, controlPos.get(i).y, controlSize.get(i).x,controlSize.get(i).y)){
+        if (sM.mPressed && h.OverRect(controlPos.get(i).x, controlPos.get(i).y, controlSize.get(i).x,controlSize.get(i).y)){
           sM.mPressed = false;                   
            if(i==1){
            sM.gameMode = false;
@@ -43,13 +44,5 @@ class Controls{
           }
     }
   }
-}
-  public boolean OverRect(float posX, float posY, float sizeX, float sizeY) {
-    if (mouseX >= posX && mouseX <= posX+sizeX &&
-      mouseY >= posY && mouseY <= posY+sizeY) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+ }
 }

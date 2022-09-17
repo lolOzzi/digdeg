@@ -8,5 +8,13 @@ class Helper {
       }
     }
     return reverse;
+  } 
+   public  boolean OverRect(float posX, float posY, float sizeX, float sizeY) {
+  if (mouseX >= posX && mouseX <= posX+sizeX &&
+    mouseY >= posY && mouseY <= posY+sizeY) {
+    return true;
+  } else {
+    return false;
   }
+ }
 }

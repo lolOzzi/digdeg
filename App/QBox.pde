@@ -51,13 +51,13 @@ class QBox {
   public void setChosen(boolean nChosen) {
     this.chosen = nChosen;
   }
-
-  public  boolean OverRect() {
+public  boolean OverRect() {
     if (mouseX >= posx && mouseX <= posx+size &&
       mouseY >= posy && mouseY <= posy+size) {
       return true;
     } else {
       return false;
     }
-  }
+ }
+ 
 }
