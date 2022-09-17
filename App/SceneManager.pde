@@ -10,7 +10,12 @@ class SceneManager {
   boolean controlMode;
 
   public SceneManager() {
+    gameMode = false;
+    smMode = false;
+    shMode = false;
+    qSMode = false;
     sceneSetup();
+
   }
 
   public void update() {
@@ -20,14 +25,22 @@ class SceneManager {
     }
     
     if (smMode) {
-      sMe = new StartMenu();
+      sMe.confMenu();
       sMe.display();
     }
     if (shMode) {
       store.update();
     }
     if (gameMode) {
-      startup();
+      sG.display(); 
+      //rect(0, height-100, width, 100);
+      p.update();
+      p.display();
+      p.keyCheck();
+      p.collisionCheck();
+      if(p.location.y >= displayHeight){
+        
+      }
     }
 
     if (qSMode) {
@@ -43,6 +56,7 @@ class SceneManager {
       }
     }
   }
+
   public void sceneSetup() {
     if (qSMode) {
       qS = new QScreen();
