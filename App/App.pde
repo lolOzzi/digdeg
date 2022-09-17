@@ -1,5 +1,4 @@
 import latex.*;
-import java.lang.reflect.Field;
 Player p;
 Weapons equipped;
 Weapons stone;
@@ -24,6 +23,7 @@ Helper h = new Helper();
 
 public void setup() {
   fullScreen();
+  sMe = new StartMenu();
   sG = new StageGenerator();
   sG.generate();
   store = new Shop();
@@ -31,34 +31,20 @@ public void setup() {
   equipped = stone;
   sM = new SceneManager();
   frameRate(30);
-  animSetup();
   sM.update();
   size(400, 400);
   ownedWeapons = new ArrayList<>();
   ownedWeapons.add(stone);
-  sMe.confMenu();
+  
 }
-void animSetup() {
-  //anim = new Animation("imgs/rin/rinsjov/frame_", "_delay-0.05s.gif", 238, 20, false);
-}
+
 
 
 void draw() {
-  //background(64);
-  
+  background(64);
   ellipse(mouseX, mouseY, 20, 20);
-  //anim.display(0,0);
-  if (sM.gameMode) {
-    sG.display(); 
-    //rect(0, height-100, width, 100);
-    p.update();
-    p.display();
-    p.keyCheck();
-    p.collisionCheck();
-  } else if (sM.qSMode) {
-    sM.update();
-  }
-  store.update();
+  sM.update();
+    
 }
 
 void startup() {
