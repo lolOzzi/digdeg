@@ -12,10 +12,6 @@ class SceneManager {
 
   public void update() {
 
-    if (dMode) {
-      startup();
-    }
-
     if (qSMode) {
       spacePressed = false;
       spacePressed();
