@@ -58,11 +58,22 @@ class StartMenu {
             sM.scene = 'C';
             print("Controls");
           } else if (i==3) {
-            coin++;
-            coinOutput = createWriter("data/save1.txt");
+            coins++;
+            coinOutput = createWriter("data/save.txt");
             coinOutput.flush();
+            coinOutput.println(coins);
+            String weaponOutput = new String();
+            for(int j = 0; j < ownedWeapons.size(); j++)
+            {
+              if (j == 0){
+                weaponOutput = str(ownedWeapons.get(j).type);
+              }
+              else{
+                weaponOutput = weaponOutput + ", " + str(ownedWeapons.get(j).type);
+              }
+            }
+            coinOutput.println(weaponOutput);
             coinOutput.close();
-            coinOutput.println(coin);
             exit();
           }
         }

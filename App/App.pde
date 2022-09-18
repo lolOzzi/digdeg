@@ -30,17 +30,19 @@ Helper h = new Helper();
 BossStageGenerator bSG;
 int level = 1;
 String[] lines;
-int coin;
+int coins;
 PrintWriter coinOutput;
+ArrayList<Integer> ownedSwords;
+String[] wps;
 
 
 public void setup() {
 
   fullScreen();
   frameRate(30);
-
   weaponImages = h.loadImages("imgs/player/weapons/");
-
+  lines = loadStrings("save.txt");
+  ownedWeapons = new ArrayList<>();
   sMe = new StartMenu();
   store = new Shop();
   sM = new SceneManager();
@@ -48,20 +50,16 @@ public void setup() {
   sG = new StageGenerator();
   sG.generate();
   store.weaponList();
-  equipped = giant;
-  ownedWeapons = new ArrayList<>();
-  ownedWeapons.add(stone);
   sM.update();
   bSG = new BossStageGenerator();
-  lines = loadStrings("save.txt");
-  coin = Integer.valueOf(lines[0]);
-  //Sound Effects
+  coins = Integer.valueOf(lines[0]);
   soundtrack = new SoundFile(this, "sounds/soundtrack.mp3");
   gameOver = new SoundFile(this, "sounds/gameOver.wav");
   slime = new SoundFile(this, "sounds/slimehit.mp3");
   jump = new SoundFile(this, "sounds/jump.wav");
   correct = new SoundFile(this, "sounds/correct.mp3");
   soundtrack.play(1, 0.4);
+  equipped = ownedWeapons.get(0);
 }
 
 void checkCollision(Enemy f) {
