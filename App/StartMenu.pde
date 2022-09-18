@@ -1,11 +1,5 @@
 class StartMenu {
 
-  PImage shop;
-  PImage quit;
-  PImage start;
-  PImage controls;
-  PImage titel;
-
   float screenWidthDifference;
   float screenHeightDifference;
   ArrayList<PImage> images;
