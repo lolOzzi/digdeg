@@ -10,14 +10,16 @@ Weapons equipped;
 Weapons[] swords;
 ArrayList<Weapons> ownedWeapons;
 ArrayList<PImage> weaponImages;
-Slime ene;
-Slime jeff;
-Slime bob;
-Slime mor;
+
+Slime jeffSl;
+Slime morSl;
+Skeleton eneSk;
+Skeleton bobSk;
 Boss boss;
 ArrayList<Enemy> enemies;
 SceneManager sM;
 StageGenerator sG;
+VictoryScreen vsM;
 Shop store;
 StartMenu sMe;
 Controls cM;
@@ -55,8 +57,13 @@ public void setup() {
   sM = new SceneManager();
   cM = new Controls();
   sG = new StageGenerator();
+  vsM = new VictoryScreen();
   sG.generate();
   store.weaponList();
+  equipped = stone;
+  ownedWeapons = new ArrayList<>();
+  ownedWeapons.add(stone);
+
   sM.update();
   bSG = new BossStageGenerator();
   coins = Integer.valueOf(lines[0]);
@@ -91,15 +98,15 @@ void draw() {
 
 void startup() {
   p = new Player();
-  ene = new Slime();
-  jeff = new Slime(600f);
-  bob = new Slime(900);
-  mor = new Slime(300, 2f, 500, new PVector(5f, 5f));
-  enemies = new ArrayList<>();
-  enemies.add(ene);
-  enemies.add(jeff);
-  enemies.add(bob);
-  enemies.add(mor);
+  eneSk = new Skeleton();
+  jeffSl = new Slime(600f);
+  bobSk = new Skeleton(900);
+  morSl = new Slime(300, 2f, 500, new PVector(5f, 5f));
+  enemies = new ArrayList<Enemy>();
+  enemies.add(eneSk);
+  enemies.add(jeffSl);
+  enemies.add(bobSk);
+  enemies.add(morSl);
   level++;
   coinList.add(new Coin(new PVector(128, 30), 0, new PVector(240/2, 240/2)));
 }

@@ -11,7 +11,11 @@ class SceneManager {
 
   public void update() {
     switch(scene) {
-
+    
+    case 'V':
+       vsM.confMenu();
+      vsM.display();
+      break;
     case 'G':
       sG.display();
       p.update();
@@ -96,6 +100,9 @@ class SceneManager {
      }
      */
     switch (scene) {
+      
+    case 'V':
+     break;
 
     case 'Q':
       qS = new QScreen();
