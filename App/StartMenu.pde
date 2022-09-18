@@ -58,6 +58,11 @@ class StartMenu {
             sM.scene = 'C';
             print("Controls");
           } else if (i==3) {
+            coin++;
+            coinOutput = createWriter("data/save1.txt");
+            coinOutput.flush();
+            coinOutput.close();
+            coinOutput.println(coin);
             exit();
           }
         }

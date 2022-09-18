@@ -29,6 +29,9 @@ SoundFile correct;
 Helper h = new Helper();
 BossStageGenerator bSG;
 int level = 1;
+String[] lines;
+int coin;
+PrintWriter coinOutput;
 
 
 public void setup() {
@@ -50,6 +53,8 @@ public void setup() {
   ownedWeapons.add(stone);
   sM.update();
   bSG = new BossStageGenerator();
+  lines = loadStrings("save.txt");
+  coin = Integer.valueOf(lines[0]);
   //Sound Effects
   soundtrack = new SoundFile(this, "sounds/soundtrack.mp3");
   gameOver = new SoundFile(this, "sounds/gameOver.wav");

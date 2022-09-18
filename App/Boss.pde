@@ -19,7 +19,7 @@ class Boss extends Enemy {
     if (hp > 0) {
       if (millis() >= attCooldown*1000 + lastAtt)
       {
-        attCooldown = random(0.2f, 1.3f);
+        attCooldown = random(0.2f, 1f);
         enemies.add(new BossAttack());
         lastAtt = millis();
       }
