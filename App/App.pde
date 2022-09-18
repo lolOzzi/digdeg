@@ -26,6 +26,9 @@ SoundFile gameOver;
 SoundFile slime;
 SoundFile jump;
 SoundFile correct;
+
+PImage platform;
+
 Helper h = new Helper();
 BossStageGenerator bSG;
 int level = 1;
@@ -43,6 +46,8 @@ public void setup() {
   weaponImages = h.loadImages("imgs/player/weapons/");
   lines = loadStrings("save.txt");
   ownedWeapons = new ArrayList<>();
+  platform = loadImage("imgs/map/platform.png");
+
   sMe = new StartMenu();
   store = new Shop();
   sM = new SceneManager();

@@ -1,5 +1,8 @@
-public class Enemy extends Character{
-    int hp;
+public class Enemy extends Character{ //<>//
+  
+    int hp; 
+    boolean hit;
+    boolean dead;
     
     Enemy(){
     hp = 10;
@@ -24,5 +27,6 @@ public class Enemy extends Character{
       this.location = new PVector(location, 300f);
       velocity = new PVector(speed, 0);
     }
+    
     
 }

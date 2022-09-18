@@ -20,10 +20,10 @@ class Controls {
     controlPos = new ArrayList<>();
     controlImages.add(loadImage("imgs/menu/controls/controlPicture.png"));
     controlImages.add(loadImage("imgs/menu/controls/Back.png"));
-    controlSize.add(new PVector(31*16, 13*16)); // size controlPicture
-    controlSize.add(new PVector(31*16, 13*16)); // size Back
+    controlSize.add(new PVector(8 * controlImages.get(0).width / 20, 8 * controlImages.get(0).height / 20)); // size controlPicture
+    controlSize.add(new PVector( controlImages.get(1).width * 0.6, controlImages.get(1).height * 0.6)); // size Back
     controlPos.add(new PVector((displayWidth/2) - (controlSize.get(0).x)/2, (displayHeight/2) - (controlSize.get(0).y)/2)); // pos controlPicture
-    controlPos.add(new PVector(displayWidth-controlSize.get(1).x, displayHeight-controlSize.get(1).y)); // pos Back
+    controlPos.add(new PVector((displayWidth-controlSize.get(1).x) - 12, displayHeight-controlSize.get(1).y - 12)); // pos Back
   }
 
   void display () {

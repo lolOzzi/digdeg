@@ -21,7 +21,7 @@ class Question {
   }
   public void display() {
     if (!cat.equals("Problemregning")) {
-      PShape formula = PTeX.toPShape(qn, 100, color(64), color(255));
+      PShape formula = PTeX.toPShape(qn, 100, color(0, 200, 255), color(255));
       shape(formula, 100, 50);
     } else {
       text(qn, 100, 150);

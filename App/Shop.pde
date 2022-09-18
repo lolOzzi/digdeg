@@ -8,6 +8,9 @@ public class Shop {
     giant = new Weapons(3, 500, (int) Math.sqrt(2*Math.pow(weaponImages.get(3).width / 5 + 500, 2)), 2.5, 5);
     fire = new Weapons(2, 21, (int) Math.sqrt(2*Math.pow(weaponImages.get(2).width / 5, 2)), 0.65, 3);
     iron = new Weapons(1, 12, (int) Math.sqrt(2*Math.pow(weaponImages.get(1).width / 5, 2)), 0.75, 2);
+    fire = new Weapons(2, 21, (int) Math.sqrt(2*Math.pow(weaponImages.get(2).width / 5, 2)), 0.65, 3);
+    giant = new Weapons(3, 50, (int) Math.sqrt(2*Math.pow(weaponImages.get(3).width / 5, 2)), 1.5, 5);
+
     swords = new Weapons[]{stone, iron, fire, giant};
     wps = split(lines[1], ", ");
     ownedSwords = new ArrayList<>();
@@ -34,8 +37,12 @@ public class Shop {
       fill(50);
       rect(i*distance, 0, distance, displayHeight);
       fill(200);
+
       textSize(104*multiplierWidth);
-      text(str(swords[i].damage), distance*i + 200, 400*multiplierHeight);
+      imageMode(CENTER);
+      image(weaponImages.get(i), (i+1)*distance/2 + i*distance/2, 300*multiplierHeight);
+      imageMode(CORNER);
+      //text(str(swords[i].damage), distance*i + 200, 400*multiplierHeight);
       textSize(50*multiplierWidth);
       if (i == 0) text("Stone Sword", distance*i + 100*multiplierWidth, 600*multiplierHeight);
       else if (i == 1) text("Iron Sword", distance*i + 100*multiplierWidth, 600*multiplierHeight);
