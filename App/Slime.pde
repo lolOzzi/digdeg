@@ -8,7 +8,7 @@ public class Slime extends Enemy {
     size = new PVector(60, 36);
     location = new PVector(300f, 300f);
     velocity = new PVector(speed, 0);
-    animSetup();  
+    animSetup();
   }
 
   Slime(float xCor) {
@@ -42,9 +42,15 @@ public class Slime extends Enemy {
       sAnimList.get("Walk").display(location.x, location.y, size.x, size.y);
     } else if (!this.facingLeft && velocity.x != 0 && !hit) {
       sAnimList.get("Walk").display(location.x, location.y, size.x, size.y);
-    } else if (hit) {
-      sAnimList.get("Hit").display(location.x, location.y, size.x, size.y);
+    }
+    if (hit) {
       hCounter++;
+      if ((hCounter < 3)) {
+        sAnimList.get("Hit").display(location.x, location.y, size.x, size.y);
+      } else {
+        hit = false;
+        hCounter = 0;
+      }
     }
   }
 
