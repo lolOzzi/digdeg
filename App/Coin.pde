@@ -2,11 +2,23 @@ class Coin extends Enemy {
   int value;
   HashMap<String, Animation> cAnimList = new HashMap<>();
 
-  Coin(PVector location) {
-    hp = 10000;
+  Coin(PVector location, int value) {
+    hp = 1;
     speed = 0;
+    this.value = value;
     gravity = new PVector(0, 0);
     size = new PVector(240/4, 240/4);
+    this.location = location;
+    velocity = new PVector(0, 0);
+    animSetup();
+  }
+  
+  Coin(PVector location, int value, PVector size){
+    hp = 1;
+    speed = 0;
+    this.value = value;
+    gravity = new PVector(0, 0);
+    this.size = size;
     this.location = location;
     velocity = new PVector(0, 0);
     animSetup();

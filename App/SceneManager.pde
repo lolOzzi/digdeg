@@ -18,6 +18,8 @@ class SceneManager {
       p.display();
       p.keyCheck();
       p.collisionCheck();
+      textSize(128);
+      text(str(coins), 0, 128);
       if (p.location.y >= displayHeight) {
         print("Player Died");
         scene = 'Q';
@@ -31,6 +33,7 @@ class SceneManager {
           enemies.clear();
           sG.generate();
           startup();
+          coinList.clear();
         } else {
           bSG.bossStageGenerate();
           scene = 'B';
@@ -66,7 +69,7 @@ class SceneManager {
       cM.confMenu();
       cM.display();
       break;
-    
+
     case 'B':
       bSG.display();
       p.update();

@@ -29,9 +29,7 @@ public class BossStageGenerator {
 
 
   void display() {
-    for (int i = 0; i < sG.numberOfPlatforms; i++) {
-      rect(sG.locations.get(i).x, sG.locations.get(i).y, sG.sizes.get(i).x, sG.sizes.get(i).y);
-    }
+    sG.display();
   }
 
   BossStageGenerator() {

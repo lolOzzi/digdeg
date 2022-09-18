@@ -62,6 +62,7 @@ public class Slime extends Enemy {
         else {sAnimList.get("Death F").display(location.x + (8*size.x/60), location.y - (20*size.y/36), ( 320 / 5) * size.x / 60, ( 280 / 5) * size.y / 36 );}
       } else {
         dCounter = 0;
+        coinList.add(new Coin(this.location, 1));
         enemies.remove(this);
       }
     }

@@ -5,6 +5,7 @@ public class Player extends Character {
   boolean attacking;
   PImage img;
   ArrayList<Enemy> tEnemies;
+  ArrayList<Coin> tCoins;
 
   Player()
   {
@@ -23,6 +24,13 @@ public class Player extends Character {
       tEnemies.get(i).update();
       tEnemies.get(i).display();
       checkCollision(tEnemies.get(i));
+    }
+
+    tCoins = new ArrayList<>(coinList);
+    for (int i = 0; i < tCoins.size(); i++) {
+      tCoins.get(i).update();
+      tCoins.get(i).display();
+      checkCoinCollision(tCoins.get(i));
     }
   }
 
@@ -43,8 +51,34 @@ public class Player extends Character {
       for (int i = 0; i < tEnemies.size(); i++) {
         checkHit(tEnemies.get(i));
       }
+
+      tCoins = new ArrayList<>(coinList);
+      for (int i = 0; i < tCoins.size(); i++) {
+        checkCoinHit(tCoins.get(i));
+      }
     }
   }
+
+  void checkCoinHit(Coin c) {
+    if (c.location.y + c.size.y  >= (location.y - (equipped.range-20)) && c.location.y <= (location.y - (equipped.range-20) + 2 * equipped.range)) {
+      if (p.facingLeft == true) {
+        if (c.location.x + c.size.x >= location.x + 12 - equipped.range && c.location.x <= location.x+ 12)
+        {
+          coins += c.value;
+          coinList.remove(c);
+        }
+      }
+
+      if (p.facingLeft == false) {
+        if (c.location.x <= location.x + size.x - 12 + equipped.range && c.location.x + c.size.x >= location.x + size.x -12)
+        {
+          coins += c.value;
+          coinList.remove(c);
+        }
+      }
+    }
+  }
+
   void attackAnim() {
     counter++;
     if (counter < 10) {
@@ -75,9 +109,19 @@ public class Player extends Character {
     if ((f.location.y + f.size.y > location.y && f.location.y < location.y + size.y) && !f.dead) {
       if (f.location.x < location.x + size.x && f.location.x + f.size.x > location.x) {
         print("Player Died");
+        coinList.clear();
         sM.scene = 'Q';
         sM.sceneSetup();
         sM.update();
+      }
+    }
+  }
+
+  void checkCoinCollision(Coin c) {
+    if (c.location.y + c.size.y > location.y && c.location.y < location.y + size.y) {
+      if (c.location.x < location.x + size.x && c.location.x + c.size.x > location.x) {
+        coins += c.value;
+        coinList.remove(c);
       }
     }
   }
