@@ -3,6 +3,8 @@ public class BossStageGenerator {
   int distance = displayWidth - 1000;
 
   void bossStageGenerate  () {
+    coinList.clear();
+    coinList.add(new Coin(new PVector(128, 30), 0, new PVector(240/2, 240/2)));
     sG.locations.clear();
     sG.sizes.clear();
     p = new Player();

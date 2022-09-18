@@ -20,8 +20,9 @@ class Question {
     }
   }
   public void display() {
+    background(64);
     if (!cat.equals("Problemregning")) {
-      PShape formula = PTeX.toPShape(qn, 100, color(0, 200, 255), color(255));
+      PShape formula = PTeX.toPShape(qn, 100, color(64), color(255));
       shape(formula, displayWidth/2 - formula.width/2 - 150, displayHeight/2 - formula.height/2);
     } else {
       text(qn, 100, 150);

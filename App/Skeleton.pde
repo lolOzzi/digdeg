@@ -55,6 +55,7 @@ public class Skeleton extends Enemy {
         else {sAnimList.get("Death F").display(location.x , location.y , ( 420 / 4-(420/4-380/4)), ( 520 / 4));}
       } else {
         dCounter = 0;
+        coinList.add(new Coin(this.location, 2));
         enemies.remove(this);
       }
     }

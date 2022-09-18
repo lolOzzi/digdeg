@@ -1,4 +1,4 @@
-class Animation { //<>//
+class Animation { //<>// //<>//
   PImage[] images;
   int imageCount;
   int frame;

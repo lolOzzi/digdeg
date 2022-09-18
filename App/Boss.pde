@@ -36,29 +36,32 @@ class Boss extends Enemy {
 
 
   void display() {
-    if (velocity.x < 0) {
+    if (velocity.x < 0 && !dead && !hit) {
       bAnimList.get("Fly F").display(location.x, location.y, size.x, size.y);
-    } else if (velocity.x > 0) {
+    } else if (velocity.x > 0 && !dead  && !hit) {
       bAnimList.get("Fly").display(location.x, location.y, size.x, size.y);
     }
     if (hit && !dead) {
       hCounter++;
       if ((hCounter < 3)) {
-        if (this.facingLeft){
-        bAnimList.get("Hit F").display(location.x, location.y, size.x, size.y);
-        }else {
-        bAnimList.get("Hit").display(location.x, location.y, size.x, size.y);
+        if (this.facingLeft) {
+          bAnimList.get("Hit F").display(location.x, location.y, size.x, size.y);
+        } else {
+          bAnimList.get("Hit").display(location.x, location.y, size.x, size.y);
         }
       } else {
         hit = false;
         hCounter = 0;
       }
     }
-     if (dead) {
+    if (dead) {
       dCounter++;
-      if ((dCounter < 15)) {
-        if (!facingLeft){bAnimList.get("Death").display(location.x - (8*size.x/60), location.y - (20*size.y/36), ( 320 / 5) * size.x / 60, ( 280 / 5) * size.y / 36);}
-        else {bAnimList.get("Death F").display(location.x + (8*size.x/60), location.y - (20*size.y/36), ( 320 / 5) * size.x / 60, ( 280 / 5) * size.y / 36 );}
+      if ((dCounter < 20)) {
+        if (!facingLeft) {
+          bAnimList.get("Death").display(location.x -((520/2) - size.x), location.y - ((520/2) - size.y), 520 / 2, 520 /2 );
+        } else {
+          bAnimList.get("Death F").display(location.x  +((520/2) - size.x), location.y - ((520/2) - size.y), 520 / 2, 520 / 2 );
+        }
       } else {
         dCounter = 0;
         coinList.add(new Coin(this.location, 1));
@@ -75,8 +78,7 @@ class Boss extends Enemy {
     bAnimList.put("Attack F", new Animation("imgs/boss/attack/sprite_", ".png", 10, 3, true));
     bAnimList.put("Hit", new Animation("imgs/boss/hit/sprite_", ".png", 1, 1, true));
     bAnimList.put("Hit F", new Animation("imgs/boss/hit/sprite_", ".png", 1, 1, false));
-    bAnimList.put("Death", new Animation("imgs/boss/death/sprite_", ".png", 5, 30, false));
-    bAnimList.put("Death F", new Animation("imgs/boss/death/sprite_", ".png", 10, 30, true));
+    bAnimList.put("Death", new Animation("imgs/boss/death/sprite_", ".png", 10, 15, false));
+    bAnimList.put("Death F", new Animation("imgs/boss/death/sprite_", ".png", 10, 15, true));
   }
-
 }

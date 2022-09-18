@@ -11,9 +11,9 @@ class SceneManager {
 
   public void update() {
     switch(scene) {
-    
+
     case 'V':
-       vsM.confMenu();
+      vsM.confMenu();
       vsM.display();
       break;
     case 'G':
@@ -31,7 +31,7 @@ class SceneManager {
         sM.update();
       }
       if (p.location.x >= displayWidth && p.location.y < sG.locations.get(sG.numberOfPlatforms - 1).y) {
-        if (level < 1) {
+        if (level < 4) {
           sG.locations.clear();
           sG.sizes.clear();
           enemies.clear();
@@ -74,6 +74,8 @@ class SceneManager {
       break;
 
     case 'B':
+      textSize(128);
+      text(str(coins), 0, 128);
       bSG.display();
       p.update();
       p.display();
@@ -99,9 +101,9 @@ class SceneManager {
      }
      */
     switch (scene) {
-      
+
     case 'V':
-     break;
+      break;
 
     case 'Q':
       qS = new QScreen();

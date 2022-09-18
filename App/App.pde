@@ -31,6 +31,7 @@ SoundFile correct;
 ArrayList<Coin> coinList;
 
 PImage platform;
+PImage background;
 
 Helper h = new Helper();
 BossStageGenerator bSG;
@@ -44,12 +45,13 @@ String[] wps;
 
 public void setup() {
 
-  fullScreen(2);
+  fullScreen();
   frameRate(30);
   weaponImages = h.loadImages("imgs/player/weapons/");
   lines = loadStrings("save.txt");
   ownedWeapons = new ArrayList<>();
   platform = loadImage("imgs/map/platform.png");
+  background = loadImage("imgs/map/background.png");
   coinList = new ArrayList<>();
   //coinList.add(new Coin(new PVector(-10,-10), 0));
   sMe = new StartMenu();
@@ -91,9 +93,9 @@ void checkCollision(Enemy f) {
 
 void draw() {
   background(0, 200, 255);
+  image(background, 0, 0, displayWidth, displayHeight);
   ellipse(mouseX, mouseY, 20, 20);
   sM.update();
-
 }
 
 void startup() {
@@ -113,7 +115,7 @@ void startup() {
 
 void mousePressed() {
   sM.mPressed = true;
-} 
+}
 
 void keyPressed() {
   if (keyCode == ESC) {

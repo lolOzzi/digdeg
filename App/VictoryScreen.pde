@@ -34,7 +34,11 @@ void confMenu() {
 
         if ( h.OverRect(vPos.get(i).x, vPos.get(i).y, vSize.get(i).x, vSize.get(i).y)) {
           if (i == 1) {
-            startup();
+            sG.locations.clear();
+            sG.sizes.clear();
+            sG.numberOfPlatforms = 7;
+            level = 1;
+            sG.generate();
             sM.scene = 'G';
           } else if (i==2) {
             sM.scene = 'M';
