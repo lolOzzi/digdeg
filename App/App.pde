@@ -44,7 +44,7 @@ String[] wps;
 
 public void setup() {
 
-  fullScreen();
+  fullScreen(2);
   frameRate(30);
   weaponImages = h.loadImages("imgs/player/weapons/");
   lines = loadStrings("save.txt");
