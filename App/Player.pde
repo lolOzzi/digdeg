@@ -11,8 +11,8 @@ public class Player extends Character {
     speed = 1f;
     img = loadImage("imgs/player/player.png");
     animSetup();
-    wSize = h.weaponImages.get(equipped.type).width / 5;
-    print(wSize + " "  + equipped.type + " " + h.weaponImages.get(equipped.type).width);
+    wSize = weaponImages.get(equipped.type).width / 5;
+    print(wSize + " "  + equipped.type + " " + weaponImages.get(equipped.type).width);
   }
 
 
@@ -55,11 +55,11 @@ public class Player extends Character {
       if (this.facingLeft) {
         translate(location.x + 12, location.y + 44);
         rotate(-(float)((2*Math.pow(counter, 2)*TWO_PI/360)-60*TWO_PI/360));
-        image(h.flip(h.weaponImages.get(equipped.type)), -wSize, -wSize, wSize, wSize);
+        image(h.flip(weaponImages.get(equipped.type)), -wSize, -wSize, wSize, wSize);
       } else {
         translate((location.x + p.size.x -12), (location.y + 44));
         rotate((float)((2*Math.pow(counter, 2)*TWO_PI/360)-60*TWO_PI/360));
-        image(h.weaponImages.get(equipped.type), 0, -wSize, wSize, wSize);
+        image(weaponImages.get(equipped.type), 0, -wSize, wSize, wSize);
       }
       popMatrix();
     } else {
@@ -78,8 +78,7 @@ public class Player extends Character {
     if ((p.location.y <= f.location.y && f.location.y < (p.location.y + p.size.y)) || (f.location.y <= p.location.y && p.location.y < (f.location.y + f.size.y))) {
       if ((f.location.x <= p.location.x && p.location.x < (f.location.x + f.size.x)) || (f.location.x <= (p.location.x + p.size.x) && (p.location.x + p.size.x) < (f.location.x + f.size.x))) {
         print("Player Died");
-        sM.qSMode = true;
-        sM.dMode = false;
+        sM.scene = 'Q';
         sM.sceneSetup();
         sM.update();
       }

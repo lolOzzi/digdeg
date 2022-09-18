@@ -1,47 +1,74 @@
 import latex.*;
+import java.util.ArrayList;
+import processing.sound.*;
 
 Player p;
-Slime ene;
-Slime jeff;
-Slime bob;
-Slime mor;
-ArrayList<Enemy> enemies;
-SceneManager sM;
-
-StageGenerator sG;
-Animation anim;
-Helper h = new Helper();
-ArrayList<Weapons> ownedWeapons;
-Weapons[] swords;
 Weapons stone;
 Weapons iron;
 Weapons fire;
 Weapons giant;
 Weapons equipped;
+Weapons[] swords;
+ArrayList<Weapons> ownedWeapons;
+ArrayList<PImage> weaponImages;
+
+Slime ene;
+Slime jeff;
+Slime bob;
+Slime mor;
+ArrayList<Enemy> enemies;
+
+SceneManager sM;
+StageGenerator sG;
 Shop store;
+StartMenu sMe;
+Controls cM;
+
+SoundFile soundtrack;
+SoundFile gameOver;
+SoundFile slime;
+SoundFile jump;
+SoundFile correct;
+
+Helper h = new Helper();
 
 
 public void setup() {
 
   fullScreen();
-  h.loadWeaponImages();
+  frameRate(30);
+
+  weaponImages = h.loadImages("imgs/player/weapons/");
+
+  sMe = new StartMenu();
   store = new Shop();
+  sM = new SceneManager();
+  cM = new Controls();
+  sG = new StageGenerator();
+  sG.generate();
+
   store.weaponList();
   equipped = giant;
   ownedWeapons = new ArrayList<>();
   ownedWeapons.add(stone);
-  sG = new StageGenerator();
-  sG.generate();
-  sM = new SceneManager();
-  frameRate(30);
+
   sM.update();
+  ownedWeapons = new ArrayList<>();
+  ownedWeapons.add(stone);
+
+  //Sound Effects
+  soundtrack = new SoundFile(this, "sounds/soundtrack.mp3");
+  gameOver = new SoundFile(this, "sounds/gameOver.wav");
+  slime = new SoundFile(this, "sounds/slimehit.mp3");
+  jump = new SoundFile(this, "sounds/jump.wav");
+  correct = new SoundFile(this, "sounds/correct.mp3");
+  soundtrack.play(1, 0.4);
 }
 void checkCollision(Enemy f) {
   if ((p.location.y <= f.location.y && f.location.y < (p.location.y + p.size.y)) || (f.location.y <= p.location.y && p.location.y < (f.location.y + f.size.y))) {
     if ((f.location.x <= p.location.x && p.location.x < (f.location.x + f.size.x)) || (f.location.x <= (p.location.x + p.size.x) && (p.location.x + p.size.x) < (f.location.x + f.size.x))) {
       print("Player Died");
-      sM.qSMode = true;
-      sM.dMode = false;
+      sM.scene = 'Q';
       sM.sceneSetup();
       sM.update();
     }
@@ -53,22 +80,7 @@ void checkCollision(Enemy f) {
 void draw() {
   background(0, 200, 255);
   ellipse(mouseX, mouseY, 20, 20);
-  if (sM.dMode) {
-    rect(0, height-100, width, 100);
-    sG.display();
-    //rect(0, height-100, width, 100);
-    p.update();
-    p.display();
-    p.keyCheck();
-
-    for (Enemy f : enemies) {
-      f.update();
-      f.display();
-      checkCollision(f);
-    }
-  } else if (sM.qSMode) {
-    sM.update();
-  }
+  sM.update();
 }
 
 void startup() {
