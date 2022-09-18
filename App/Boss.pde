@@ -2,6 +2,7 @@ class Boss extends Enemy {
   float attCooldown;
   int lastAtt;
   HashMap<String, Animation> bAnimList = new HashMap<>();
+  int hCounter;
 
   Boss() {
     attCooldown = 1.2;
@@ -39,6 +40,15 @@ class Boss extends Enemy {
     } else if (velocity.x > 0) {
       bAnimList.get("Fly").display(location.x, location.y, size.x, size.y);
     }
+    if (hit && !dead) {
+      hCounter++;
+      if ((hCounter < 3)) {
+        bAnimList.get("Hit").display(location.x, location.y, size.x, size.y);
+      } else {
+        hit = false;
+        hCounter = 0;
+      }
+    }
   }
 
   void animSetup() {
@@ -46,5 +56,8 @@ class Boss extends Enemy {
     bAnimList.put("Fly F", new Animation("imgs/boss/fly/sprite_", ".png", 3, 3, true));
     bAnimList.put("Attack", new Animation("imgs/boss/attack/sprite_", ".png", 10, 3, false));
     bAnimList.put("Attack F", new Animation("imgs/boss/attack/sprite_", ".png", 10, 3, true));
+    bAnimList.put("Hit", new Animation("imgs/boss/hit/sprite_", ".png", 1, 1, true));
+    bAnimList.put("Hit F", new Animation("imgs/boss/hit/sprite_", ".png", 1, 1, false));
   }
+
 }

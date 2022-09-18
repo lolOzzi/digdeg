@@ -67,7 +67,6 @@ public void setup() {
   correct = new SoundFile(this, "sounds/correct.mp3");
   soundtrack.play(1, 0.4);
   equipped = ownedWeapons.get(0);
-  coinList.add(new Coin(new PVector(128, 30), 0, new PVector(240/2, 240/2)));
 }
 
 void checkCollision(Enemy f) {
@@ -102,6 +101,7 @@ void startup() {
   enemies.add(bob);
   enemies.add(mor);
   level++;
+  coinList.add(new Coin(new PVector(128, 30), 0, new PVector(240/2, 240/2)));
 }
 
 void mousePressed() {
