@@ -1,3 +1,3 @@
 # digdeg - Digital Design projekt
 
-Dette er vores digital design projekt  - MathVenture
+Dette er vores digital design projekt  - MatVenture
