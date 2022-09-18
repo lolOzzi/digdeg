@@ -1,6 +1,7 @@
-public class Enemy extends Character{
+public class Enemy extends Character{ //<>//
   
     int hp; 
+    boolean hit;
     
     Enemy(){
     hp = 10;

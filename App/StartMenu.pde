@@ -44,8 +44,6 @@ class StartMenu {
     if (sM.mPressed) {
       sM.mPressed = false;
       for (int i = 0; i < images.size(); i++) {
-
-
         if ( h.OverRect(pos.get(i).x, pos.get(i).y, size.get(i).x, size.get(i).y)) {
           if (i == 0) {
             sM.scene = 'S';

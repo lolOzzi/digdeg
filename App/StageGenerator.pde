@@ -38,17 +38,17 @@ void generate(){
     for (int i = 0; i < numberOfPlatforms; i++){
     if (i == 0){
       
-      rect(locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
+      image(platform, locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
     }
     
     if (i < numberOfPlatforms - 1){
       rectMode(CORNER);
-      rect(locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
+      image(platform, locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
     }
     else {
     rectMode(CORNER);
     fill(0, 255, 0);
-    rect(locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
+    image(platform, locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
     fill(255);
     //println(i);
     }

@@ -1,5 +1,6 @@
 public class Slime extends Enemy {
   HashMap<String, Animation> sAnimList= new HashMap<>();
+  int hCounter;
 
   Slime() {
     hp = 10;
@@ -7,7 +8,7 @@ public class Slime extends Enemy {
     size = new PVector(60, 36);
     location = new PVector(300f, 300f);
     velocity = new PVector(speed, 0);
-    animSetup();
+    animSetup();  
   }
 
   Slime(float xCor) {
@@ -27,26 +28,29 @@ public class Slime extends Enemy {
     velocity = new PVector(speed, 0);
     animSetup();
   }
-  
+
   void turn() {
     velocity.x *= -1;
   }
   void display() {
 
-    if ( velocity.x == 0) {
+    if ( velocity.x == 0 && !hit) {
       sAnimList.get("Walk").display(location.x, location.y, size.x, size.y);
-    } else if (this.facingLeft && velocity.x != 0) {
+    } else if (this.facingLeft && velocity.x != 0&& !hit) {
       sAnimList.get("Walk F").display(location.x, location.y, size.x, size.y);
-    } else if (!this.facingLeft && velocity.x == 0) {
+    } else if (!this.facingLeft && velocity.x == 0&& !hit) {
       sAnimList.get("Walk").display(location.x, location.y, size.x, size.y);
-    } else {
+    } else if (!this.facingLeft && velocity.x != 0 && !hit) {
       sAnimList.get("Walk").display(location.x, location.y, size.x, size.y);
+    } else if (hit) {
+      sAnimList.get("Hit").display(location.x, location.y, size.x, size.y);
+      hCounter++;
     }
   }
 
   void animSetup() {
-
     sAnimList.put("Walk", new Animation("imgs/slime/walk/sprite_", ".png", 2, 3, false));
     sAnimList.put("Walk F", new Animation("imgs/slime/walk/sprite_", ".png", 2, 3, true));
+    sAnimList.put("Hit", new Animation("imgs/slime/hit/hit", ".png", 1, 1/3, false));
   }
 }

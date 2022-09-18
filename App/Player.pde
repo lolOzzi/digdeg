@@ -162,6 +162,7 @@ public class Player extends Character {
         if (f.location.x + f.size.x >= location.x + 12 - equipped.range && f.location.x <= location.x+ 12)
         {
           f.hp -= equipped.damage;
+          f.hit = true;
           if (f.hp <= 0)
             enemies.remove(f);
         }
@@ -170,6 +171,7 @@ public class Player extends Character {
       if (p.facingLeft == false) {
         if (f.location.x <= location.x + size.x - 12 + equipped.range && f.location.x + f.size.x >= location.x + size.x -12)
         {
+          f.hit = true;
           f.hp -= equipped.damage;
           if (f.hp <= 0)
             enemies.remove(f);
@@ -177,4 +179,7 @@ public class Player extends Character {
       }
     }
   }
+  
+    
+
 }

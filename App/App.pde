@@ -31,6 +31,8 @@ SoundFile slime;
 SoundFile jump;
 SoundFile correct;
 
+PImage platform;
+
 Helper h = new Helper();
 
 
@@ -40,6 +42,7 @@ public void setup() {
   frameRate(30);
 
   weaponImages = h.loadImages("imgs/player/weapons/");
+  platform = loadImage("imgs/map/platform.png");
 
   sMe = new StartMenu();
   store = new Shop();
