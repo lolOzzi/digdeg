@@ -57,7 +57,7 @@ public class Slime extends Enemy {
     }
     if (dead) {
       dCounter++;
-      if ((dCounter < 15)) {
+      if ((dCounter < 18)) {
         if (!facingLeft){sAnimList.get("Death").display(location.x - (8*size.x/60), location.y - (20*size.y/36), ( 320 / 5) * size.x / 60, ( 280 / 5) * size.y / 36);}
         else {sAnimList.get("Death F").display(location.x + (8*size.x/60), location.y - (20*size.y/36), ( 320 / 5) * size.x / 60, ( 280 / 5) * size.y / 36 );}
       } else {

@@ -34,8 +34,10 @@ class QBox {
     }
     textAlign(LEFT);
     textSize(60);
-
-    text(text, posx + size + 20, posy + size/2 + 15);
+    shapeMode(CENTER);
+    PShape formula = PTeX.toPShape(text, 70, color(0, 200, 255), color(255));
+    shape(formula, posx + size + formula.width/2 + 50, posy + size/2 + 15);
+    shapeMode(CORNER);
     fill(255);
   }
 

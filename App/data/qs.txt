@@ -1,4 +1,15 @@
-Problemregning,1,Er Rin Sej?,ja,ja,maybe,nej,no way bro
-Problemregning,1,Er Oscar Sej?,ja,ja,maybe,nej,no way bro
-Regneregler,1,3+4 \cdot 3,15,21,15,12,13
-Regneregler,1,3 + \frac{3}{3},4,4,1,3,2
+Regneregler;1;3 + 4 \cdot 3;15;21;15;12;13
+Regneregler;2;(5 + 6) \cdot 22;17;21;35;22;16
+Regneregler;3;\frac{3}{1 + 2};1;1;0;3;9
+Regneregler;4;4 - 3 \cdot 4 + 3;-5;7;-17;-5;11
+Regneregler;5;3 \cdot \frac{3}{2+1};3;9;27;3;1
+Brøkregneregler;1;\frac{1}{5} + \frac{1}{5};\frac{2}{5};\frac{2}{5};\frac{2}{10};\frac{1}{5};\frac{1}{3}
+Brøkregneregler;2;\frac{1}{4} + \frac{1}{7};\frac{11}{28};\frac{4}{7};\frac{11}{28};\frac{1}{2};\frac{7}{18}
+Brøkregneregler;3;\frac{2}{4} + \frac{3}{7};\frac{13}{14};\frac{13}{14};\frac{4}{5};\frac{20}{21};\frac{5}{6}
+Brøkregneregler;4;\frac{1}{4} \cdot \frac{3}{5};\frac{3}{20};1 \frac{1}{4};1 \frac{3}{5};\frac{2}{3};\frac{3}{20}
+Brøkregneregler;5;\frac{\frac{4}{5}}{\frac{4}{9}};1 \frac{4}{5};1 \frac{4}{5};\frac{16}{45};\frac{3}{14};2 \frac{3}{5}
+Ligninger;1;4x + 3 = 5;x = \frac{1}{2};x = 2;x = 5;x = \frac{1}{2};x = 3
+Ligninger;2;14x + 3 = 4 + 2x;x = \frac{1}{12};x = 12;x = \frac{1}{12};x = 3;x = \frac{1}{2}
+Ligninger;3;-3x + 2 = x;x = 2;x = 2;x = \frac{1}{2};x = 3;x = 4
+Ligninger;4;4x + 3y = 6y - 2x;x = \frac{1}{2}y;x = 2y;x = \frac{1}{2}y;x = 5y;x = 4\frac{1}{2}y
+Ligninger;5;32x - 5x \cdot 3x = x^2;x = 2;x = \frac{1}{2};x = 2;x = 4;x = 17
