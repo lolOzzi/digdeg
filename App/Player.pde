@@ -15,7 +15,6 @@ public class Player extends Character {
     img = loadImage("imgs/player/player.png");
     animSetup();
     wSize = weaponImages.get(equipped.type).width / 5;
-    print(wSize + " "  + equipped.type + " " + weaponImages.get(equipped.type).width);
   }
   void collisionCheck() {
     tEnemies = new ArrayList<>(enemies);

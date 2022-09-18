@@ -72,7 +72,7 @@ class QScreen {
     ArrayList<Question> qList = new ArrayList<>();
     String[] lines = loadStrings("qs.txt");
     for (String a : lines) {
-      String[] qArr = a.split(",");
+      String[] qArr = a.split(";");
       qList.add( new Question(qArr[0], Integer.parseInt(qArr[1]), qArr[2], qArr[3], new String[] { qArr[4], qArr[5], qArr[6], qArr[7] }));
     }
     return qList;

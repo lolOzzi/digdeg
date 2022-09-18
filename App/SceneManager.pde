@@ -47,7 +47,6 @@ class SceneManager {
       spacePressed();
       qS.update(this);
       qS.display();
-      println(spacePressed);
       if (qS.getDone() && spacePressed) {
         scene = 'G';
         print("I DID THIS");
