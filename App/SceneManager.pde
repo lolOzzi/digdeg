@@ -73,7 +73,7 @@ class SceneManager {
       p.display();
       p.keyCheck();
       p.collisionCheck();
-      boss.attack();
+      boss.bossUpdate();
       break;
     }
   }
