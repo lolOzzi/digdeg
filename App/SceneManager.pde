@@ -11,13 +11,19 @@ class SceneManager {
 
   public void update() {
     switch(scene) {
-
+    
+    case 'V':
+       vsM.confMenu();
+      vsM.display();
+      break;
     case 'G':
       sG.display();
       p.update();
       p.display();
       p.keyCheck();
       p.collisionCheck();
+      textSize(128);
+      text(str(coins), 0, 128);
       if (p.location.y >= displayHeight) {
         print("Player Died");
         scene = 'Q';
@@ -25,11 +31,17 @@ class SceneManager {
         sM.update();
       }
       if (p.location.x >= displayWidth && p.location.y < sG.locations.get(sG.numberOfPlatforms - 1).y) {
-        sG.locations.clear();
-        sG.sizes.clear();
-        enemies.clear();
-        sG.generate();
-        startup();
+        if (level < 1) {
+          sG.locations.clear();
+          sG.sizes.clear();
+          enemies.clear();
+          sG.generate();
+          startup();
+          coinList.clear();
+        } else {
+          bSG.bossStageGenerate();
+          scene = 'B';
+        }
       }
       break;
 
@@ -47,7 +59,6 @@ class SceneManager {
       spacePressed();
       qS.update(this);
       qS.display();
-      println(spacePressed);
       if (qS.getDone() && spacePressed) {
         scene = 'G';
         print("I DID THIS");
@@ -60,6 +71,15 @@ class SceneManager {
       print("Control");
       cM.confMenu();
       cM.display();
+      break;
+
+    case 'B':
+      bSG.display();
+      p.update();
+      p.display();
+      p.keyCheck();
+      p.collisionCheck();
+      boss.bossUpdate();
       break;
     }
   }
@@ -79,6 +99,9 @@ class SceneManager {
      }
      */
     switch (scene) {
+      
+    case 'V':
+     break;
 
     case 'Q':
       qS = new QScreen();

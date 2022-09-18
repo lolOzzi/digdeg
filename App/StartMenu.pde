@@ -1,11 +1,5 @@
 class StartMenu {
 
-  PImage shop;
-  PImage quit;
-  PImage start;
-  PImage controls;
-  PImage titel;
-
   float screenWidthDifference;
   float screenHeightDifference;
   ArrayList<PImage> images;
@@ -44,8 +38,6 @@ class StartMenu {
     if (sM.mPressed) {
       sM.mPressed = false;
       for (int i = 0; i < images.size(); i++) {
-
-
         if ( h.OverRect(pos.get(i).x, pos.get(i).y, size.get(i).x, size.get(i).y)) {
           if (i == 0) {
             sM.scene = 'S';
@@ -58,6 +50,22 @@ class StartMenu {
             sM.scene = 'C';
             print("Controls");
           } else if (i==3) {
+            coins++;
+            coinOutput = createWriter("data/save.txt");
+            coinOutput.flush();
+            coinOutput.println(coins);
+            String weaponOutput = new String();
+            for(int j = 0; j < ownedWeapons.size(); j++)
+            {
+              if (j == 0){
+                weaponOutput = str(ownedWeapons.get(j).type);
+              }
+              else{
+                weaponOutput = weaponOutput + ", " + str(ownedWeapons.get(j).type);
+              }
+            }
+            coinOutput.println(weaponOutput);
+            coinOutput.close();
             exit();
           }
         }
