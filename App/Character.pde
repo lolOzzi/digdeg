@@ -1,13 +1,10 @@
 public class Character {
   PVector location, velocity, size;
   float speed;
-  PVector gravity = new PVector(0, 0.25f);
+  PVector gravity = new PVector(0, 0.5f);
   PVector acceleration = new PVector(0, 0);
   boolean hitGround;
   boolean facingLeft;
-  boolean hitGround;
-
-
 
   void checkDirection() {
     if (velocity.x < 0) {

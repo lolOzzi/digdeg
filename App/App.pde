@@ -99,7 +99,12 @@ void startup() {
   enemies.add(mor);
 }
 
-
 void mousePressed() {
   sM.mPressed = true;
+} 
+void keyPressed() {
+  if (keyCode == ESC) {
+    key = 0;
+    sM.scene = 'M';
+  }
 }

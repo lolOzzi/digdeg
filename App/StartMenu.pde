@@ -37,26 +37,31 @@ class StartMenu {
   }
 
   void display () {
+
     for (int i = 0; i < images.size(); i++) {
-
       image(images.get(i), pos.get(i).x, pos.get(i).y, size.get(i).x, size.get(i).y); // draw Images
+    }
+    if (sM.mPressed) {
+      sM.mPressed = false;
+      for (int i = 0; i < images.size(); i++) {
 
-      if (sM.mPressed && h.OverRect(pos.get(i).x, pos.get(i).y, size.get(i).x, size.get(i).y)) {
-        sM.mPressed = false;
-        if (i == 0) {
-          sM.scene = 'S';
-          print("shop");
-        } else if (i==1) {
-          startup();
-          sM.scene = 'G';
-          print("start");
-        } else if (i ==2) {
-          sM.scene = 'C';
-          print("Controls");
-        } else if (i==3) {
-          exit();
+
+        if ( h.OverRect(pos.get(i).x, pos.get(i).y, size.get(i).x, size.get(i).y)) {
+          if (i == 0) {
+            sM.scene = 'S';
+            print("shop");
+          } else if (i==1) {
+            startup();
+            sM.scene = 'G';
+            print("start");
+          } else if (i ==2) {
+            sM.scene = 'C';
+            print("Controls");
+          } else if (i==3) {
+            exit();
+          }
         }
-      } 
+      }
     }
   }
 }
