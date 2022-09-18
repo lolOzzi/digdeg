@@ -1,11 +1,12 @@
 public class Character {
   PVector location, velocity, size;
   float speed;
-  PVector gravity = new PVector(0, 0.5f);
+  PVector gravity = new PVector(0, 0.25f);
   PVector acceleration = new PVector(0, 0);
-  PImage img;
+  boolean hitGround;
   boolean facingLeft;
   boolean hitGround;
+
 
 
   void checkDirection() {
@@ -15,7 +16,6 @@ public class Character {
       facingLeft = false;
     }
   }
-
   
     void applyForce(PVector force){
         acceleration.add(force);
@@ -33,6 +33,7 @@ public class Character {
         if (velocity.y < -18 ) {
           velocity.y = -18;
         }
+
         location.add(velocity);
         acceleration.mult(0);
         if(hitGround == false){
@@ -58,6 +59,7 @@ public class Character {
   void checkEdges(){
     for (int i = 0; i < sG.locations.size(); i++){
       if (location.x <= sG.locations.get(i).x + sG.sizes.get(i).x && sG.locations.get(i).x <= location.x + size.x)
+
         if (sG.locations.get(i).y < location.y + size.y && location.y < sG.locations.get(i).y + sG.sizes.get(i).y){
             velocity.y = 0;
             location.y = sG.locations.get(i).y - size.y;
@@ -68,6 +70,4 @@ public class Character {
       
     }
   }
-    
-  
 }

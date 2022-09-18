@@ -20,6 +20,7 @@ ArrayList<Enemy> enemies;
 
 SceneManager sM;
 StageGenerator sG;
+
 Shop store;
 StartMenu sMe;
 Controls cM;
@@ -53,6 +54,7 @@ public void setup() {
   ownedWeapons.add(stone);
 
   sM.update();
+
   ownedWeapons = new ArrayList<>();
   ownedWeapons.add(stone);
 
@@ -81,6 +83,7 @@ void draw() {
   background(0, 200, 255);
   ellipse(mouseX, mouseY, 20, 20);
   sM.update();
+
 }
 
 void startup() {

@@ -1,3 +1,4 @@
+
 /*
 public class BossStageGenerator {
 float numberOfPlatforms = 4;
@@ -12,7 +13,9 @@ ArrayList<PVector> bossLocations = new ArrayList<>();
 ArrayList<PVector> bossSizes = new ArrayList<>();
   
 
+
 void bossStageGenerate  () {
+
 for (float i = 0;i <= numberOfPlatforms;i++){
 
         if (i == 0) {

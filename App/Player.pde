@@ -14,8 +14,6 @@ public class Player extends Character {
     wSize = weaponImages.get(equipped.type).width / 5;
     print(wSize + " "  + equipped.type + " " + weaponImages.get(equipped.type).width);
   }
-
-
   void collisionCheck() {
     for (Enemy f : enemies) {
       f.update();
@@ -132,7 +130,6 @@ public class Player extends Character {
           ArrayList<Enemy> tEnemies = new ArrayList<>(enemies);
           for (int i = 0; i < tEnemies.size(); i++) {
             checkHit(tEnemies.get(i));
-            print("i Hit");
           }
         }
       }
@@ -149,6 +146,7 @@ public class Player extends Character {
       if (equipped.type == -1) {
         rect(pLocation.x, pLocation.y, (equipped.range *-1) + playerWidth, 10); // Width = Range, Range mod Left subtraheres med Player størrelse, -16 pga. sværdets loaktion på playerens hånd
       } 
+
     } else {
       if (equipped.type == -1) {
         rect(pLocation.x, pLocation.y, equipped.range, 10);
@@ -178,4 +176,88 @@ public class Player extends Character {
       }
     }
   }
+  
+  void animSetup() {
+    pAnimList.put("Run", new Animation("imgs/player/run/sprite_", ".png", 5, 15, false));
+    pAnimList.put("Run F", new Animation("imgs/player/run/sprite_", ".png", 5, 15, true));
+    pAnimList.put("Idle", new Animation("imgs/player/idle/sprite_", ".png", 2, 3, false));
+    pAnimList.put("Idle F", new Animation("imgs/player/idle/sprite_", ".png", 2, 3, true));
+  }
+    
+  void checkCollision(Enemy f) {
+    if ((p.location.y <= f.location.y && f.location.y < (p.location.y + p.size.y)) || (f.location.y <= p.location.y && p.location.y < (f.location.y + f.size.y))) {
+      if ((f.location.x <= p.location.x && p.location.x < (f.location.x + f.size.x)) || (f.location.x <= (p.location.x + p.size.x) && (p.location.x + p.size.x) < (f.location.x + f.size.x))) {
+        print("Player Died");
+        sM.qSMode = true;
+        sM.dMode = false;
+        sM.sceneSetup();
+        sM.update();
+      }
+    }
+  }
+
+    void moveLeft(){
+      velocity.x = -10 * speed;
+    } void moveRight(){
+      velocity.x = 10 * speed;
+    } void stopLeft(){
+      velocity.x = 0;
+    } void stopRight(){
+      velocity.x = 0;
+    } void moveUp(){
+      applyForce(new PVector(0, -6)); 
+    }
+    
+    void keyCheck() {
+      if (keyPressed == true) {
+        if (key == 'a' || key == 'A') {
+          moveLeft();
+        } if (key == 'd' || key == 'D') {
+          moveRight();
+        } if ((key == 'w' || key == 'W') && hitGround == true) {
+          moveUp();
+        } else if (key == 'w' || key == 'W');
+        if (key == ' ') {
+          equipped.countdown();
+          if (equipped.canAttack == true) {
+            equipped.attack(location, size.x);
+            ArrayList<Enemy> tEnemies = new ArrayList<>(enemies);
+            for (int i = 0; i < tEnemies.size(); i++) {
+              checkHit(tEnemies.get(i));
+            }
+          }
+        }
+      } else if (keyPressed == false) {
+        if (key == 'a' || key == 'A') {
+          stopLeft();
+        } else if (key == 'd' || key == 'D') {
+          stopRight();
+        }
+      }
+    }
+
+  void checkHit(Enemy f) {
+    if ((location.y <= f.location.y && f.location.y < (location.y + size.y)) || (f.location.y <= location.y && location.y < (f.location.y + f.size.y))) {
+  
+      if (p.facingLeft == true) {
+        if ((location.x - equipped.range) <= f.location.x && f.location.x <= location.x || (location.x - equipped.range) <= f.location.x + f.size.x && f.location.x + f.size.x <= location.x)
+        {
+          f.hp -= equipped.damage;
+          if (f.hp <= 0)
+            enemies.remove(f);
+        }
+      }
+  
+      if (p.facingLeft == false) {
+        if ((location.x <= f.location.x + f.size.x && f.location.x + f.size.x <= (location.x + equipped.range)) || location.x <= f.location.x && f.location.x <= (location.x + equipped.range))
+        {
+          f.hp -= equipped.damage;
+          if (f.hp <= 0)
+            enemies.remove(f);
+        }
+      }
+    }
+  }
+    
+
 }
