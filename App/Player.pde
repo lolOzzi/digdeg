@@ -74,8 +74,8 @@ public class Player extends Character {
   }
 
   void checkCollision(Enemy f) {
-    if ((p.location.y <= f.location.y && f.location.y < (p.location.y + p.size.y)) || (f.location.y <= p.location.y && p.location.y < (f.location.y + f.size.y))) {
-      if ((f.location.x <= p.location.x && p.location.x < (f.location.x + f.size.x)) || (f.location.x <= (p.location.x + p.size.x) && (p.location.x + p.size.x) < (f.location.x + f.size.x))) {
+    if (f.location.y + f.size.y > location.y && f.location.y < location.y + size.y) {
+      if (f.location.x < location.x + size.x && f.location.x + f.size.x > location.x) {
         print("Player Died");
         sM.scene = 'Q';
         sM.sceneSetup();
