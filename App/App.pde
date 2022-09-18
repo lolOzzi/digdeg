@@ -14,6 +14,7 @@ Slime ene;
 Slime jeff;
 Slime bob;
 Slime mor;
+Boss boss;
 ArrayList<Enemy> enemies;
 SceneManager sM;
 StageGenerator sG;
@@ -84,7 +85,7 @@ void startup() {
   jeff = new Slime(600f);
   bob = new Slime(900);
   mor = new Slime(300, 2f, 500, new PVector(5f, 5f));
-  enemies = new ArrayList<Enemy>();
+  enemies = new ArrayList<>();
   enemies.add(ene);
   enemies.add(jeff);
   enemies.add(bob);

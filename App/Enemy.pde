@@ -1,6 +1,5 @@
 public class Enemy extends Character{
-  
-    int hp; 
+    int hp;
     
     Enemy(){
     hp = 10;
