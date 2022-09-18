@@ -3,39 +3,101 @@ class SceneManager {
   boolean spacePressed;
   boolean spaceReleased;
   boolean mPressed;
-  boolean qSMode;
-  boolean dMode;
+  char scene;
 
   public SceneManager() {
     sceneSetup();
   }
 
   public void update() {
+    switch(scene) {
 
-    if (dMode) {
-      startup();
-    }
+    case 'G':
+      sG.display();
+      p.update();
+      p.display();
+      p.keyCheck();
+      p.collisionCheck();
+      if (p.location.y >= displayHeight) {
+        print("Player Died");
+        scene = 'Q';
+        sM.sceneSetup();
+        sM.update();
+      }
+      if (p.location.x >= displayWidth && p.location.y < sG.locations.get(sG.numberOfPlatforms - 1).y) {
+        sG.locations.clear();
+        sG.sizes.clear();
+        enemies.clear();
+        sG.generate();
+        startup();
+      }
+      break;
 
-    if (qSMode) {
+    case 'M':
+      sMe.confMenu();
+      sMe.display();
+      break;
+
+    case 'S':
+      store.update();
+      break;
+
+    case 'Q':
       spacePressed = false;
       spacePressed();
       qS.update(this);
       qS.display();
       println(spacePressed);
       if (qS.getDone() && spacePressed) {
-        qSMode = false;
-        dMode = true;
+        scene = 'G';
+        print("I DID THIS");
+        correct.play();
         sceneSetup();
       }
+      break;
+
+    case 'C':
+      print("Control");
+      cM.confMenu();
+      cM.display();
+      break;
     }
   }
+
+
   public void sceneSetup() {
-    if (qSMode) {
+    /*
+    if (switcher == 'Q') {
+     
+     } else if (switcher == 'G'){
+     
+     }else if(switcher == 'S') {
+     }else if (switcher == 'C'){
+     } else {
+     switcher = 'M';
+     
+     }
+     */
+    switch (scene) {
+
+    case 'Q':
       qS = new QScreen();
       spaceReleased = true;
-    } else {
-      dMode = true;
+      break;
+
+    case 'G':
       startup();
+      break;
+
+    case 'S':
+      break;
+
+    case 'C':
+      cM.confMenu();
+      break;
+
+    default:
+      scene = 'M';
     }
   }
 

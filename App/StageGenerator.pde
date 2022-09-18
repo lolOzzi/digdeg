@@ -1,4 +1,5 @@
 public class StageGenerator {
+
  float numberOfPlatforms = 4;
 float posX =  displayWidth/numberOfPlatforms;
 float firstPlatform =  displayWidth/4;
@@ -12,11 +13,11 @@ float screenHeightDifference = displayHeight/1080f;
   
   
   void generate(){
-    //println(displayWidth);
-    //println(ewr);
      for(float i = 0; i < numberOfPlatforms; i++){
        
         if (i == 0) {
+
+
         locations.add(new PVector(posX*i,880*screenHeightDifference));
         sizes.add(new PVector(300*screenWidthDifference, 40));
         
