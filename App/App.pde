@@ -1,7 +1,6 @@
 import latex.*;
 import java.util.ArrayList;
 import processing.sound.*;
-
 Player p;
 Weapons stone;
 Weapons iron;
@@ -11,27 +10,24 @@ Weapons equipped;
 Weapons[] swords;
 ArrayList<Weapons> ownedWeapons;
 ArrayList<PImage> weaponImages;
-
 Slime ene;
 Slime jeff;
 Slime bob;
 Slime mor;
 ArrayList<Enemy> enemies;
-
 SceneManager sM;
 StageGenerator sG;
-
 Shop store;
 StartMenu sMe;
 Controls cM;
-
 SoundFile soundtrack;
 SoundFile gameOver;
 SoundFile slime;
 SoundFile jump;
 SoundFile correct;
-
 Helper h = new Helper();
+BossStageGenerator bSG;
+int level = 1;
 
 
 public void setup() {
@@ -47,17 +43,12 @@ public void setup() {
   cM = new Controls();
   sG = new StageGenerator();
   sG.generate();
-
   store.weaponList();
   equipped = giant;
   ownedWeapons = new ArrayList<>();
   ownedWeapons.add(stone);
-
   sM.update();
-
-  ownedWeapons = new ArrayList<>();
-  ownedWeapons.add(stone);
-
+  bSG = new BossStageGenerator();
   //Sound Effects
   soundtrack = new SoundFile(this, "sounds/soundtrack.mp3");
   gameOver = new SoundFile(this, "sounds/gameOver.wav");
@@ -66,6 +57,7 @@ public void setup() {
   correct = new SoundFile(this, "sounds/correct.mp3");
   soundtrack.play(1, 0.4);
 }
+
 void checkCollision(Enemy f) {
   if ((p.location.y <= f.location.y && f.location.y < (p.location.y + p.size.y)) || (f.location.y <= p.location.y && p.location.y < (f.location.y + f.size.y))) {
     if ((f.location.x <= p.location.x && p.location.x < (f.location.x + f.size.x)) || (f.location.x <= (p.location.x + p.size.x) && (p.location.x + p.size.x) < (f.location.x + f.size.x))) {
@@ -97,11 +89,13 @@ void startup() {
   enemies.add(jeff);
   enemies.add(bob);
   enemies.add(mor);
+  level++;
 }
 
 void mousePressed() {
   sM.mPressed = true;
 } 
+
 void keyPressed() {
   if (keyCode == ESC) {
     key = 0;

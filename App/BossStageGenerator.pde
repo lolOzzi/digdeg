@@ -1,67 +1,41 @@
-
-/*
 public class BossStageGenerator {
-float numberOfPlatforms = 4;
-float posX =  displayWidth/numberOfPlatforms;
-float firstPlatform =  displayWidth/4;
-float secondPlatform =  (displayWidth/2)+firstPlatform;
-float heightDifference = 200;
 
-float screenWidthDifference = displayWidth/1920f;
-float screenHeightDifference = displayHeight/1080f;
-ArrayList<PVector> bossLocations = new ArrayList<>();
-ArrayList<PVector> bossSizes = new ArrayList<>();
-  
+  int distance = displayWidth - 1000;
 
-
-void bossStageGenerate  () {
-
-for (float i = 0;i <= numberOfPlatforms;i++){
-
-        if (i == 0) {
-          bossLocations.add(new PVector(posX*i,880*screenHeightDifference));
-          bossSizes.add(new PVector(300*screenWidthDifference, 40));
-        } else if (i < numberOfPlatforms) {
-          if (heightDifference == 200) {
-          bosslocations.add(new PVector(secondPlatform,720*screenHeightDifference-heightDifference));
-          bossSizes.add(new PVector(posX/2.5*screenWidthDifference, 40));  
-          
-          } else {
-          bosslocations.add(new PVector(firstPlatform,1040*screenHeightDifference));
-          bossSizes.add(new PVector(posX/2*screenWidthDifference, 40));  
-          }
-         secondPlatform = secondPlatform/2;
-         heightDifference = heightDifference * -1;
-         } else {
-          bosslocations.add(new PVector(posX*i,880*screenHeightDifference));
-          bossSizes.add(new PVector(-300*screenWidthDifference, 40));
-        }
-    }
-}
-void display(){
-    for (int i = 0; i < numberOfPlatforms; i++){
-    if (i == 0){
-      
-      rect(bosslocations.get(i).x, bosslocations.get(i).y, bossSizes.get(i).x, bossSizes.get(i).y);
-      //rect(100, 900, 319, 40);
-      //println(locations.get(i).x + "  " + locations.get(i).y + "  " + sizes.get(i).x + "  " + sizes.get(i).y);
-      //print(i);
-    }
-    
-    if (i < numberOfPlatforms - 1){
-      rectMode(CORNER);
-      rect(bosslocations.get(i).x, bosslocations.get(i).y, bossSizes.get(i).x, bossSizes.get(i).y);
-      //print(i);
-    }
-    else {
-    rectMode(CORNER);
-    fill(0, 255, 0);
-    rect(bosslocations.get(i).x, bosslocations.get(i).y, BossSizes.get(i).x, bossSizes.get(i).y);
-    fill(255);
-    //println(i);
-    }
-
+  void bossStageGenerate  () {
+    sG.locations.clear();
+    sG.sizes.clear();
+    p = new Player();
+    enemies.clear();
+    sG.numberOfPlatforms = 5;
+    for (float i = 0; i < sG.numberOfPlatforms; i++) {
+      if (i == 0) {
+        sG.locations.add(new PVector(0, displayHeight - 300));
+        sG.sizes.add(new PVector(400, 40));
+      } 
+      else if (i < sG.numberOfPlatforms - 2) {
+        sG.locations.add(new PVector(sG.sizes.get(0).x + (distance*(i-1)), displayHeight - 600));
+        sG.sizes.add(new PVector(200, 40));
+        
+      } 
+      else if (i < sG.numberOfPlatforms - 1) {
+        sG.locations.add(new PVector(sG.locations.get(1).x + sG.sizes.get(1).x, displayHeight - 40));
+        sG.sizes.add(new PVector(sG.locations.get(2).x - (sG.locations.get(1).x + sG.sizes.get(1).x), 40));
+      } 
+      else {
+        sG.locations.add(new PVector(displayWidth - 400, displayHeight - 300));
+        sG.sizes.add(new PVector(400, 40));
+      }
     }
   }
+
+
+  void display() {
+    for (int i = 0; i < sG.numberOfPlatforms; i++) {
+      rect(sG.locations.get(i).x, sG.locations.get(i).y, sG.sizes.get(i).x, sG.sizes.get(i).y);
+    }
+  }
+
+  BossStageGenerator() {
+  }
 }
-*/

@@ -5,7 +5,7 @@ public class Shop{
   
   void weaponList(){
     stone = new Weapons(0, 5, (int) Math.sqrt(2*Math.pow(weaponImages.get(0).width / 5, 2)), 0.5, 0);
-    giant = new Weapons(3, 50, (int) Math.sqrt(2*Math.pow(weaponImages.get(3).width / 5, 2)), 2.5, 5);
+    giant = new Weapons(3, 500, (int) Math.sqrt(2*Math.pow(weaponImages.get(3).width / 5 + 500, 2)), 2.5, 5);
     fire = new Weapons(2, 21, (int) Math.sqrt(2*Math.pow(weaponImages.get(2).width / 5, 2)), 0.65, 3);
     iron = new Weapons(1, 12, (int) Math.sqrt(2*Math.pow(weaponImages.get(1).width / 5, 2)), 0.75, 2);
     swords = new Weapons[]{stone, iron, fire, giant};

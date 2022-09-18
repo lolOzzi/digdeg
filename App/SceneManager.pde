@@ -25,11 +25,16 @@ class SceneManager {
         sM.update();
       }
       if (p.location.x >= displayWidth && p.location.y < sG.locations.get(sG.numberOfPlatforms - 1).y) {
-        sG.locations.clear();
-        sG.sizes.clear();
-        enemies.clear();
-        sG.generate();
-        startup();
+        if (level < 1) {
+          sG.locations.clear();
+          sG.sizes.clear();
+          enemies.clear();
+          sG.generate();
+          startup();
+        } else {
+          bSG.bossStageGenerate();
+          scene = 'B';
+        }
       }
       break;
 
@@ -60,6 +65,14 @@ class SceneManager {
       print("Control");
       cM.confMenu();
       cM.display();
+      break;
+    
+    case 'B':
+      bSG.display();
+      p.update();
+      p.display();
+      p.keyCheck();
+      p.collisionCheck();
       break;
     }
   }
