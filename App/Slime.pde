@@ -72,7 +72,7 @@ public class Slime extends Enemy {
     sAnimList.put("Walk", new Animation("imgs/slime/walk/sprite_", ".png", 2, 3, false));
     sAnimList.put("Walk F", new Animation("imgs/slime/walk/sprite_", ".png", 2, 3, true));
     sAnimList.put("Hit", new Animation("imgs/slime/hit/hit", ".png", 1, 1/3, false));
-    sAnimList.put("Death", new Animation("imgs/slime/death/sprite_", ".png", 5, 10, false));
-    sAnimList.put("Death F", new Animation("imgs/slime/death/sprite_", ".png", 5, 10, true));
+    sAnimList.put("Death", new Animation("imgs/slime/death/sprite_", ".png", 6, 10, false));
+    sAnimList.put("Death F", new Animation("imgs/slime/death/sprite_", ".png", 6, 10, true));
   }
 }

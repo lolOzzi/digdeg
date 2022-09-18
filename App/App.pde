@@ -53,7 +53,7 @@ public void setup() {
   sG.generate();
 
   store.weaponList();
-  equipped = giant;
+  equipped = stone;
   ownedWeapons = new ArrayList<>();
   ownedWeapons.add(stone);
 
