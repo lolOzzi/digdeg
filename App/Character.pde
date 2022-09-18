@@ -57,7 +57,7 @@ public class Character {
     for (int i = 0; i < sG.locations.size(); i++){
       if (location.x <= sG.locations.get(i).x + sG.sizes.get(i).x && sG.locations.get(i).x <= location.x + size.x)
 
-        if (sG.locations.get(i).y < location.y + size.y && location.y < sG.locations.get(i).y + sG.sizes.get(i).y){
+        if (sG.locations.get(i).y <= location.y + size.y && location.y <= sG.locations.get(i).y + sG.sizes.get(i).y){
             velocity.y = 0;
             location.y = sG.locations.get(i).y - size.y;
             hitGround = true;

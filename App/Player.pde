@@ -4,6 +4,8 @@ public class Player extends Character {
   int wSize; //Equipeed Weapon Size, eg. size = 10, is a 10 x 10 image
   boolean attacking;
   PImage img;
+  ArrayList<Enemy> tEnemies;
+
   Player()
   {
     location = new PVector(100, 790);
@@ -16,34 +18,30 @@ public class Player extends Character {
     print(wSize + " "  + equipped.type + " " + weaponImages.get(equipped.type).width);
   }
   void collisionCheck() {
-    for (Enemy f : enemies) {
-      f.update();
-      f.display();
-      checkCollision(f);
+    tEnemies = new ArrayList<>(enemies);
+    for (int i = 0; i < tEnemies.size(); i++) {
+      tEnemies.get(i).update();
+      tEnemies.get(i).display();
+      checkCollision(tEnemies.get(i));
     }
   }
 
   void display() {
-
+    println(this.hitGround);
     if (this.facingLeft && velocity.x == 0) {
       pAnimList.get("Idle F").display(location.x, location.y, size.x, size.y);
-      if (attacking) {
-        attackAnim();
-      }
     } else if (this.facingLeft && velocity.x != 0) {
       pAnimList.get("Run F").display(location.x, location.y, size.x, size.y);
-      if (attacking) {
-        attackAnim();
-      }
     } else if (!this.facingLeft && velocity.x == 0) {
       pAnimList.get("Idle").display(location.x, location.y, size.x, size.y);
-      if (attacking) {
-        attackAnim();
-      }
     } else {
       pAnimList.get("Run").display(location.x, location.y, size.x, size.y);
-      if (attacking) {
-        attackAnim();
+    }
+    if (attacking) {
+      attackAnim();
+      tEnemies = new ArrayList<>(enemies);
+      for (int i = 0; i < tEnemies.size(); i++) {
+        checkHit(tEnemies.get(i));
       }
     }
   }
@@ -74,8 +72,8 @@ public class Player extends Character {
   }
 
   void checkCollision(Enemy f) {
-    if ((p.location.y <= f.location.y && f.location.y < (p.location.y + p.size.y)) || (f.location.y <= p.location.y && p.location.y < (f.location.y + f.size.y))) {
-      if ((f.location.x <= p.location.x && p.location.x < (f.location.x + f.size.x)) || (f.location.x <= (p.location.x + p.size.x) && (p.location.x + p.size.x) < (f.location.x + f.size.x))) {
+    if ((f.location.y + f.size.y > location.y && f.location.y < location.y + size.y) && !f.dead) {
+      if (f.location.x < location.x + size.x && f.location.x + f.size.x > location.x) {
         print("Player Died");
         sM.scene = 'Q';
         sM.sceneSetup();
@@ -123,15 +121,11 @@ public class Player extends Character {
         moveUp();
       } else if (key == 'w' || key == 'W');
       if (key == ' ') {
-            
+
         equipped.countdown();
         if (equipped.canAttack == true) {
           attacking = true;
           attack(location, size.x);
-          ArrayList<Enemy> tEnemies = new ArrayList<>(enemies);
-          for (int i = 0; i < tEnemies.size(); i++) {
-            checkHit(tEnemies.get(i));
-          }
         }
       }
     } else if (keyPressed == false) {
@@ -146,8 +140,7 @@ public class Player extends Character {
     if (p.facingLeft == true) {
       if (equipped.type == -1) {
         rect(pLocation.x, pLocation.y, (equipped.range *-1) + playerWidth, 10); // Width = Range, Range mod Left subtraheres med Player størrelse, -16 pga. sværdets loaktion på playerens hånd
-      } 
-
+      }
     } else {
       if (equipped.type == -1) {
         rect(pLocation.x, pLocation.y, equipped.range, 10);
@@ -157,22 +150,28 @@ public class Player extends Character {
   }
   void checkHit(Enemy f) {
 
-    if (f.location.y + f.size.y  >= (location.y - (equipped.range-20)) && f.location.y <= (location.y - (equipped.range-20) + 2 * equipped.range)){
+    if (f.location.y + f.size.y  >= (location.y - (equipped.range-20)) && f.location.y <= (location.y - (equipped.range-20) + 2 * equipped.range)) {
       if (p.facingLeft == true) {
         if (f.location.x + f.size.x >= location.x + 12 - equipped.range && f.location.x <= location.x+ 12)
         {
-          f.hp -= equipped.damage;
-          if (f.hp <= 0)
-            enemies.remove(f);
+          if (counter == 1) {
+            f.hp -= equipped.damage;
+            f.hit = true;
+            if (f.hp <= 0)
+              f.dead = true;
+          }
         }
       }
 
       if (p.facingLeft == false) {
         if (f.location.x <= location.x + size.x - 12 + equipped.range && f.location.x + f.size.x >= location.x + size.x -12)
         {
-          f.hp -= equipped.damage;
-          if (f.hp <= 0)
-            enemies.remove(f);
+          if (counter == 1) {
+            f.hp -= equipped.damage;
+            f.hit = true;
+            if (f.hp <= 0)
+              f.dead = true;
+          }
         }
       }
     }
