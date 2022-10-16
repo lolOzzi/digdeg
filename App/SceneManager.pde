@@ -11,7 +11,9 @@ class SceneManager {
 
   public void update() {
     switch(scene) {
-
+    case 'I':
+      sI.display();
+      break;
     case 'V':
       vsM.confMenu();
       vsM.display();
@@ -122,7 +124,7 @@ class SceneManager {
       break;
 
     default:
-      scene = 'M';
+      scene = 'I';
     }
   }
 

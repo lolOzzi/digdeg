@@ -1,7 +1,15 @@
+import g4p_controls.*;
+
+
+import de.bezier.data.sql.*;
+import de.bezier.data.sql.mapper.*;
+
 import latex.*;
 import java.util.ArrayList;
 import processing.sound.*;
+
 Player p;
+int playerID = -1;
 Weapons stone;
 Weapons iron;
 Weapons fire;
@@ -22,6 +30,7 @@ StageGenerator sG;
 VictoryScreen vsM;
 Shop store;
 StartMenu sMe;
+SignIn sI;
 Controls cM;
 SoundFile soundtrack;
 SoundFile gameOver;
@@ -41,12 +50,13 @@ int coins;
 PrintWriter coinOutput;
 ArrayList<Integer> ownedSwords;
 String[] wps;
-
+SQLite db;
 
 public void setup() {
 
   fullScreen();
   frameRate(30);
+  db = new SQLite( this, "./data/mvDB.sqlite" );
   weaponImages = h.loadImages("imgs/player/weapons/");
   lines = loadStrings("save.txt");
   ownedWeapons = new ArrayList<>();
@@ -54,6 +64,7 @@ public void setup() {
   background = loadImage("imgs/map/background.png");
   coinList = new ArrayList<>();
   //coinList.add(new Coin(new PVector(-10,-10), 0));
+  sI = new SignIn(this);
   sMe = new StartMenu();
   store = new Shop();
   sM = new SceneManager();
