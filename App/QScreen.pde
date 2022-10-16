@@ -57,12 +57,10 @@ class QScreen {
   public void acceptQuestion(QBox cQB, Question q1, int i) {
 
     if (q1.getOpts()[i].equals(q1.ans)) {
-      println("du har ret");
       cQB.setRAns(true);
       cQB.display();
       done = true;
     } else {
-      println("du tager fejl");
       cQB.setWAns(true);
       cQB.display();
       done = true;

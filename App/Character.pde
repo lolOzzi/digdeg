@@ -61,7 +61,6 @@ public class Character {
             velocity.y = 0;
             location.y = sG.locations.get(i).y - size.y;
             hitGround = true;
-            ellipse(sG.locations.get(i).x, sG.locations.get(i).y, 10, 10);
         }
       else hitGround = false;
       

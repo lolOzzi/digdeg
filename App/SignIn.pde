@@ -1,6 +1,3 @@
-import de.bezier.data.sql.*;
-import de.bezier.data.sql.mapper.*;
-import g4p_controls.*;
 import java.awt.Font;
 
 
@@ -73,6 +70,8 @@ public class SignIn {
     }
   }
 
+
+
   public void signIn() {
     if ( db.connect() ) {
       db.query( String.format("SELECT * FROM Player WHERE (password == '%s' AND username == '%2s')", inputPassword, inputUsername));
@@ -80,7 +79,19 @@ public class SignIn {
 
       while (db.next()) {
         playerID = db.getInt("playerID");
-        print(playerID);
+        coins = db.getInt("coins");
+        if (db.getInt("hasStone") == 1){
+          ownedWeapons.add(stone);
+        }if (db.getInt("hasIron") == 1){
+          ownedWeapons.add(iron);
+        }if (db.getInt("hasFire") == 1){
+          ownedWeapons.add(fire);
+        }if (db.getInt("hasGiant") == 1){
+          ownedWeapons.add(giant);
+        }
+        username.setVisible(false);
+        password.setVisible(false);
+        sM.scene = 'M';
       }
     }
   }

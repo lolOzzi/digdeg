@@ -41,35 +41,37 @@ class StartMenu {
         if ( h.OverRect(pos.get(i).x, pos.get(i).y, size.get(i).x, size.get(i).y)) {
           if (i == 0) {
             sM.scene = 'S';
-            print("shop");
           } else if (i==1) {
             startup();
-            sM.scene = 'G';
-            print("start");
+            sM.scene = 'G';;
           } else if (i ==2) {
             sM.scene = 'C';
-            print("Controls");
           } else if (i==3) {
-            coins++;
             coinOutput = createWriter("data/save.txt");
             coinOutput.flush();
             coinOutput.println(coins);
             String weaponOutput = new String();
-            for(int j = 0; j < ownedWeapons.size(); j++)
+            for (int j = 0; j < ownedWeapons.size(); j++)
             {
-              if (j == 0){
+              if (j == 0) {
                 weaponOutput = str(ownedWeapons.get(j).type);
-              }
-              else{
+              } else {
                 weaponOutput = weaponOutput + ", " + str(ownedWeapons.get(j).type);
               }
             }
             coinOutput.println(weaponOutput);
             coinOutput.close();
-            exit();
+            if (db.connect()) {
+              println(db.connect());
+              db.query( String.format("SELECT * FROM Player WHERE (password == '%s' AND username == '%2s')", sI.inputPassword, sI.inputUsername));
+              while (db.next()) {
+                db.query(String.format("UPDATE Player SET coins = " + coins + " WHERE (password == '%s' AND username == '%2s')", sI.inputPassword, sI.inputUsername));
+              }
+            }
+              exit();
+            }
           }
         }
       }
     }
   }
-}

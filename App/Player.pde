@@ -34,7 +34,6 @@ public class Player extends Character {
   }
 
   void display() {
-    println(this.hitGround);
     if (this.facingLeft && velocity.x == 0) {
       pAnimList.get("Idle F").display(location.x, location.y, size.x, size.y);
     } else if (this.facingLeft && velocity.x != 0) {

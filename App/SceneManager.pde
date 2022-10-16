@@ -27,7 +27,6 @@ class SceneManager {
       textSize(128);
       text(str(coins), 0, 128);
       if (p.location.y >= displayHeight) {
-        print("Player Died");
         scene = 'Q';
         sM.sceneSetup();
         sM.update();
@@ -63,14 +62,12 @@ class SceneManager {
       qS.display();
       if (qS.getDone() && spacePressed) {
         scene = 'G';
-        print("I DID THIS");
         correct.play();
         sceneSetup();
       }
       break;
 
     case 'C':
-      print("Control");
       cM.confMenu();
       cM.display();
       break;

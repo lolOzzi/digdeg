@@ -13,8 +13,6 @@ float screenHeightDifference = displayHeight/1080f;
   
   
 void generate(){
-    //println(displayWidth);
-    //println(ewr);
      for(float i = 0; i < numberOfPlatforms; i++){
        
         if (i == 0) {
@@ -50,7 +48,6 @@ void generate(){
     fill(0, 255, 0);
     image(platform, locations.get(i).x, locations.get(i).y, sizes.get(i).x, sizes.get(i).y);
     fill(255);
-    //println(i);
     }
 
     }

@@ -12,13 +12,12 @@ public class Shop {
     swords = new Weapons[]{stone, iron, fire, giant};
     wps = split(lines[1], ", ");
     ownedSwords = new ArrayList<>();
-    
-    for (String wpnames : wps){
-      print(wpnames);
+
+    for (String wpnames : wps) {
       ownedSwords.add(Integer.valueOf(wpnames));
     }
-      
-    for (Weapons wp : swords){
+
+    for (Weapons wp : swords) {
       for (int i = 0; i < ownedSwords.size(); i++) {
         if (wp.type == ownedSwords.get(i))
           ownedWeapons.add(wp);
@@ -62,12 +61,37 @@ public class Shop {
         if (distance*i < mouseX && mouseX < distance*(i+1))
         {
           isSwordOwned(swords[i]);
-          if (!swordOwned && coins > swords[i].cost) {
+          if (!swordOwned && coins >= swords[i].cost) {
             ownedWeapons.add(swords[i]);
             coins -= swords[i].cost;
             equipped = swords[i];
-          } else equipped = swords[i];
+            buyUpdate(i);
+          } else if (ownedSwords.contains(swords[i]))
+          {
+            equipped = swords[i];
+          }
         }
+      }
+    }
+  }
+
+  void buyUpdate(int i) {
+    if (db.connect()) {
+      db.query( String.format("SELECT * FROM Player WHERE (password == '%s' AND username == '%2s')", sI.inputPassword, sI.inputUsername));
+      while (db.next()) {
+        if (i == 0) {
+          db.query(String.format("UPDATE Player SET hasStone = 1 WHERE (password == '%s' AND username == '%2s')", sI.inputPassword, sI.inputUsername));
+        }
+        if (i == 1) {
+          db.query(String.format("UPDATE Player SET hasIron = 1 WHERE (password == '%s' AND username == '%2s')", sI.inputPassword, sI.inputUsername));
+        }
+        if (i == 2) {
+          db.query(String.format("UPDATE Player SET hasFire = 1 WHERE (password == '%s' AND username == '%2s')", sI.inputPassword, sI.inputUsername));
+        }
+        if (i == 3) {
+          db.query(String.format("UPDATE Player SET hasGiant = 1 WHERE (password == '%s' AND username == '%2s')", sI.inputPassword, sI.inputUsername));
+        }
+        db.query(String.format("UPDATE Player SET coins = " + coins + " WHERE (password == '%s' AND username == '%2s')", sI.inputPassword, sI.inputUsername));
       }
     }
   }
