@@ -91,6 +91,7 @@ public class SignIn {
         }
         username.setVisible(false);
         password.setVisible(false);
+        print("Hey");
         sM.scene = 'M';
       }
     }

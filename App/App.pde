@@ -56,7 +56,7 @@ public void setup() {
 
   fullScreen();
   frameRate(30);
-  db = new SQLite( this, "./data/mvDB.sqlite" );
+  
   weaponImages = h.loadImages("imgs/player/weapons/");
   lines = loadStrings("save.txt");
   ownedWeapons = new ArrayList<>();
@@ -76,7 +76,6 @@ public void setup() {
   equipped = stone;
   ownedWeapons = new ArrayList<>();
   ownedWeapons.add(stone);
-
   sM.update();
   bSG = new BossStageGenerator();
   coins = Integer.valueOf(lines[0]);
@@ -87,6 +86,7 @@ public void setup() {
   correct = new SoundFile(this, "sounds/correct.mp3");
   soundtrack.play(1, 0.4);
   equipped = ownedWeapons.get(0);
+  db = new SQLite( this, "./data/mvDB.sqlite" );
 }
 
 void checkCollision(Enemy f) {

@@ -10,18 +10,19 @@ public class Shop {
     giant = new Weapons(3, 50, (int) Math.sqrt(2*Math.pow(weaponImages.get(3).width / 5, 2)), 1.5, 5);
 
     swords = new Weapons[]{stone, iron, fire, giant};
-    wps = split(lines[1], ", ");
     ownedSwords = new ArrayList<>();
 
-    for (String wpnames : wps) {
-      ownedSwords.add(Integer.valueOf(wpnames));
-    }
-
-    for (Weapons wp : swords) {
-      for (int i = 0; i < ownedSwords.size(); i++) {
-        if (wp.type == ownedSwords.get(i))
-          ownedWeapons.add(wp);
+    for (int i = 0; i < ownedSwords.size(); i++){
+      if (i == 0){
+        ownedWeapons.add(stone);
+      }if (i == 1){
+        ownedWeapons.add(iron);
+      }if (i == 2){
+        ownedWeapons.add(fire);
+      }if (i == 3){
+        ownedWeapons.add(giant);
       }
+
     }
     distance = displayWidth/swords.length;
   }
@@ -66,7 +67,7 @@ public class Shop {
             coins -= swords[i].cost;
             equipped = swords[i];
             buyUpdate(i);
-          } else if (ownedSwords.contains(swords[i]))
+          } else if (ownedWeapons.contains(swords[i]))
           {
             equipped = swords[i];
           }
