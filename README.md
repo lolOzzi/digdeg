@@ -1,5 +1,17 @@
-# digdeg - din mors svar på livet
+# digdeg - Digital Design projekt
 
-yo yo yo, vi har et sejt projekt her!
+Dette er vores digital design projekt  - MatVenture
 
-<img src="https://vignette.wikia.nocookie.net/fantendo/images/0/0b/Rin_tohsaka_are_you_looking_at_me.png" alt="Rin" width="320">
+Download den nyeste release, for at køre programmet
+
+Klik herunder for at videoen over projektet:
+
+[![YT video](https://img.youtube.com/vi/0UDouZqMwMc/0.jpg)](https://www.youtube.com/watch?v=0UDouZqMwMc)
+
+Link til vores tidsplan for Database projectet:
+
+[Tidsplan](https://trello.com/b/lHkY6lqc/databaser)
+
+Burndown Chart:
+
+![image](https://user-images.githubusercontent.com/88722233/196042109-0d26e69c-c931-4903-85b1-dcd7de2014bd.png)
